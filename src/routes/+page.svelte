@@ -25,6 +25,8 @@
     try editing <strong>src/routes/+page.svelte</strong>
   </h2>
 
+<h1>Okkkkkkk my man</h1>
+
   <Counter />
 </section>
 
