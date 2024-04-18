@@ -48,9 +48,6 @@
 				/>
 			</span>
 		</li>
-		<li><a href="/zines" on:click={toggleSettings}>Zines</a></li>
-		<li><a href="/about" on:click={toggleSettings}>About</a></li>
-		<li><a href="/contact" on:click={toggleSettings}>Contact</a></li>
 	</ul>
 </div>
 

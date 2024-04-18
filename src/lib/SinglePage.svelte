@@ -1,5 +1,5 @@
 <div id="wrapper">
-  <div id="inside"><slot name="content" /></div>
+  <div id="inside" class="my-20"><slot name="content" /></div>
 </div>
 
 <style>

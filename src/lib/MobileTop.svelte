@@ -5,8 +5,8 @@
 	const titles = ['Home', 'Zines', 'About', 'Contact'];
 </script>
 
-<ul>
-	<li id="title">{titles[index]}</li>
+<ul class="fixed w-full bg-white z-10 top-0">
+	<li id="title">{titles[index.index]}</li>
 	<li id="burger"><button on:click={toggleMenu}>Menu</button></li>
 </ul>
 

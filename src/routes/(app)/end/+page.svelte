@@ -1,16 +1,11 @@
 <script>
 	import Pages from '$lib/Pages.svelte';
+    import Contact from '$lib/pages/Contact.svelte';
 	import { setIndex } from '$lib/stores';
 
 	setIndex(4);
 </script>
 
 <Pages>
-	<h1 slot="left">Contact</h1>
+	<Contact slot="left"/>
 </Pages>
-
-<style>
-	h1 {
-		margin: 50px 10px;
-	}
-</style>

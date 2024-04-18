@@ -1,6 +1,8 @@
 <script>
 	import Pages from '$lib/Pages.svelte';
 	import SinglePage from '$lib/SinglePage.svelte';
+    import Cover from '$lib/pages/Cover.svelte';
+    import Home from '$lib/pages/Home.svelte';
 	import { setIndex } from '$lib/stores';
 
 	setIndex(0);
@@ -11,16 +13,11 @@
 
 {#if innerWidth > 900}
 	<Pages>
-		<h1 slot="right">Home</h1>
+		<Cover slot="left"/>
+		<Home slot="right"/>
 	</Pages>
 {:else}
 	<SinglePage>
-		<h1 slot="content">Home</h1>
+		<Home slot="content"/>
 	</SinglePage>
 {/if}
-
-<style>
-	h1 {
-		margin: 50px 10px;
-	}
-</style>

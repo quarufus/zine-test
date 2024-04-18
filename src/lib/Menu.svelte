@@ -11,9 +11,9 @@
 	}
 </script>
 
-<div style="--width: {width}%">
+<div style="--width: {width}%" class="top-0">
 	<button id="close" on:click={toggleMenu}>Close</button>
-	<ul>
+	<ul class="p-20">
 		<li><a href="/home" on:click={toggleMenu}>Home</a></li>
 		<li><a href="/zines" on:click={toggleMenu}>Zines</a></li>
 		<li><a href="/about" on:click={toggleMenu}>About</a></li>
@@ -27,7 +27,7 @@
 		position: absolute;
 		height: 100%;
 		background-color: var(--bg);
-		z-index: 1;
+		z-index: 12;
 		text-align: left;
 	}
 	ul {
