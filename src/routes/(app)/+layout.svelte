@@ -1,0 +1,48 @@
+<script lang="ts">
+	import Top from '$lib/Top.svelte';
+	import MobileTop from '$lib/MobileTop.svelte';
+	import Menu from '$lib/Menu.svelte';
+	import MobileFooter from '$lib/MobileFooter.svelte';
+	import VerticalRule from '$lib/VerticalRule.svelte';
+	import { store, setIndex } from '$lib/stores';
+
+	let index = setIndex(0);
+
+	const unsubscribeIndex = store.subscribe((value) => {
+		index = index;
+	});
+
+	$: innerWidth = 0;
+	$: menu = false;
+	function toggleMenu() {
+		menu = !menu;
+	}
+
+	const pages = ['Home', 'Zines', 'About', 'Contact'];
+</script>
+
+<svelte:window bind:innerWidth />
+
+<main style="--bg: #f9f9f9">
+	{#if menu}
+		<Menu {toggleMenu} {innerWidth} />
+	{/if}
+	{#if innerWidth > 900}
+		<Top {toggleMenu} bind:index={$store} />
+		<VerticalRule />
+		<slot />
+	{:else}
+		<MobileTop {toggleMenu} bind:index={$store} />
+		<slot />
+		<MobileFooter bind:index={$store} />
+	{/if}
+</main>
+
+<style>
+	:root {
+		background-color: var(--bg);
+	}
+	:global(body) {
+		margin: 0;
+	}
+</style>
