@@ -1,8 +1,8 @@
 <script>
-    let src='$lib/images/pigeon.png'
+    import Pigeon from "$lib/images/pigeon.png";
 </script>
 
-<img src="src/lib/images/pigeon.png" alt="A pigeon">
+<img src={Pigeon} alt="A pigeon" />
 
 <style>
     img {
@@ -20,3 +20,4 @@
         filter: blur(10px); */
     }
 </style>
+

@@ -1,9 +1,9 @@
 <script>
-	import Pages from '$lib/Pages.svelte';
-	import { setIndex } from '$lib/stores';
-	import SinglePage from '$lib/SinglePage.svelte';
-    import About from '$lib/pages/About.svelte';
-    import Contact from '$lib/pages/Contact.svelte';
+	import Pages from "$lib/Pages.svelte";
+	import { setIndex } from "$lib/stores";
+	import SinglePage from "$lib/SinglePage.svelte";
+	import About from "$lib/pages/About.svelte";
+	import Contact from "$lib/pages/Contact.svelte";
 
 	setIndex(3);
 	$: innerWidth = 0;
@@ -13,11 +13,12 @@
 
 {#if innerWidth > 900}
 	<Pages>
-		<About slot="left"/>
-		<Contact slot="right"/>
+		<About slot="left" />
+		<Contact slot="right" />
 	</Pages>
 {:else}
 	<SinglePage>
-		<Contact slot="content"/>
+		<Contact slot="content" />
 	</SinglePage>
 {/if}
+
