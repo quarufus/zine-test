@@ -4,3 +4,16 @@ export function load({ params }) {
         slug: params.issue
     }
 }
+
+/** @type {import('./$types').EntryGenerator} */
+export function entries() {
+	return [
+		{ issue: 'One' },
+		{ issue: 'Two' },
+        { issue: 'Three' },
+        { issue: 'Four' },
+        { issue: 'Five' }
+	];
+}
+
+export const prerender = true;
