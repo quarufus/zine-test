@@ -1,1 +1,4 @@
-<h1 class="p-2.5">Contact</h1>
+<div class="p-10">
+  <h1>Επικοινωνία</h1>
+</div>
+

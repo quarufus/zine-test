@@ -1,0 +1,9 @@
+
+	.page {
+		border: 1px solid;
+		display: flex;
+		flex-wrap: wrap;
+		height: 700px;
+		width: 50%;
+		margin-bottom: 20px;
+	}

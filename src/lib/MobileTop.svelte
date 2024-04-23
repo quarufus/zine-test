@@ -2,7 +2,7 @@
 	export let index;
 	export let toggleMenu;
 
-	const titles = ['Home', 'Zines', 'About', 'Contact'];
+	const titles = ["Home", "Zines", "About", "Contact"];
 </script>
 
 <ul class="fixed w-full bg-white z-10 top-0">
@@ -14,7 +14,7 @@
 	ul {
 		list-style: none;
 		display: flex;
-		border-bottom: 2px solid black;
+		border-bottom: var(--border);
 		margin: 0;
 		padding: 0;
 	}

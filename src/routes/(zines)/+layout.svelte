@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Top from '$lib/Top.svelte';
-	import MobileTop from '$lib/MobileTop.svelte';
-	import Menu from '$lib/Menu.svelte';
-	import MobileFooter from '$lib/MobileFooter.svelte';
-	import VerticalRule from '$lib/VerticalRule.svelte';
-	import { store, setIndex } from '$lib/stores';
+	import Top from "$lib/Top.svelte";
+	import MobileTop from "$lib/MobileTop.svelte";
+	import Menu from "$lib/Menu.svelte";
+	import MobileFooter from "$lib/MobileFooter.svelte";
+	import VerticalRule from "$lib/VerticalRule.svelte";
+	import { store, setIndex } from "$lib/stores";
 
 	let index = setIndex(0);
 
@@ -18,10 +18,14 @@
 		menu = !menu;
 	}
 
-	const pages = ['Home', 'Zines', 'About', 'Contact'];
+	const pages = ["Home", "Zines", "About", "Contact", "End"];
 </script>
 
 <svelte:window bind:innerWidth />
+
+<svelte:head>
+	<title>To Bitoni | {pages[$store.index]}</title>
+</svelte:head>
 
 <main style="--bg: #f9f9f9" class="h-full">
 	{#if menu}

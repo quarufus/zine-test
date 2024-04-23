@@ -2,8 +2,8 @@
     let zines = ["One", "Two", "Three", "Four", "Five"];
 </script>
 
-<div class="p-[5px]">
-    <h1 class="p-[5px]">Zines</h1>
+<div class="p-10">
+    <h1 class="p-[5px]">Περιοδικά</h1>
     <div
         class="grid grid-cols-2 sm:grid-cols-3 min-[900px]:grid-cols-2 xl:grid-cols-3"
     >
@@ -26,4 +26,3 @@
         height: 17rem;
     }
 </style>
-
