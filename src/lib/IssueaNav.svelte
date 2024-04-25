@@ -5,7 +5,15 @@
 	export let previous;
 	export let index;
 	export let length;
+
+	$: innerWidth = 0;
+	$: myLength = length;
+	$: if (innerWidth > 900 && length % 2 == 0) {
+		myLength = length - 1;
+	}
 </script>
+
+<svelte:window bind:innerWidth />
 
 <ul>
 	<li>
@@ -14,9 +22,9 @@
 		{/if}
 	</li>
 	<li class="right"><button on:click={toggleSettings}>Settings</button></li>
-	<li class="left">Issue {title}</li>
+	<li class="left">Issue {title} | {index + 2}</li>
 	<li class="right">
-		{#if index <= length}
+		{#if index < myLength - 1}
 			<button on:click={next}>Next -></button>
 		{/if}
 	</li>
