@@ -1,17 +1,17 @@
 //import {document} from "$app/environment"
 
-export function paginate(htmlDocument, index, textSize) {
+export function paginate(htmlDocument, index, textSize, font) {
 	let width = window.innerWidth / 2;
 	let margin = 200;
 	if (window.innerWidth < 900) {
 		width = window.innerWidth;
 		margin = 50;
 	}
-	const height = window.innerHeight - 100;
-	return appendChunks(getNodes(htmlDocument, width, margin, textSize, height), index); //!TODO Add font
+	const height = window.innerHeight - 140;
+	return appendChunks(getNodes(htmlDocument, width, margin, textSize, height, font), index); //!TODO Add font
 }
 
-function getNodes(htmlDocument, innerWidth, margin, textSize, height) {
+function getNodes(htmlDocument, innerWidth, margin, textSize, height, font) {
 	const offscreenDiv = document.createElement("div");
 	offscreenDiv.className = "page";
 	offscreenDiv.style.position = "absolute";
@@ -25,6 +25,7 @@ function getNodes(htmlDocument, innerWidth, margin, textSize, height) {
 	offscreenDiv.style.height = `${height}px`;
 	offscreenDiv.style.fontSize =
 		`${((innerWidth / 20000) * textSize).toString()}em`;
+	offscreenDiv.style.fontFamily = font;
 	offscreenDiv.style.width = `${(innerWidth - margin).toString()}px`;
 	document.body.appendChild(offscreenDiv);
 	let offscreenRect = offscreenDiv.getBoundingClientRect();
@@ -56,10 +57,10 @@ function getNodes(htmlDocument, innerWidth, margin, textSize, height) {
 	}
 	// offscreenDiv is not needed anymore
 	offscreenDiv.remove();
-	return { chunks, innerWidth, margin, textSize };
+	return { chunks, innerWidth, margin, textSize, font };
 }
 
-function appendChunks({ chunks, innerWidth, margin, textSize }, index) {
+function appendChunks({ chunks, innerWidth, margin, textSize, font }, index) {
 	const container = document.getElementsByClassName("root_container")[0];
 	container.innerHTML = "";
 	const length = chunks.length;
@@ -83,6 +84,7 @@ function appendChunks({ chunks, innerWidth, margin, textSize }, index) {
 		page.style.fontSize =
 			`${((innerWidth / 20000) * textSize).toString()}em`;
 		page.style.width = `${(innerWidth - margin).toString()}px`;
+		page.style.fontFamily = font;
 		for (const element of chunk) {page.appendChild(element)};
 			container.appendChild(page);
 	};

@@ -2,16 +2,29 @@
 	import IssueaNav from "$lib/IssueaNav.svelte";
 	import Settings from "$lib/Settings.svelte";
 	import VerticalRule from "$lib/VerticalRule.svelte";
-	import { onMount } from "svelte";
+	import { onDestroy, onMount } from "svelte";
 	import One from "$lib/zines/One.html?raw";
 	import { paginate } from "$lib/paginate.js";
-	import MobileFooter from "$lib/MobileFooter.svelte";
+	import MobileZineNav from "$lib/MobileZineNav.svelte";
+	import MobileTop from "$lib/MobileTop.svelte";
+	import { setFontSize, readerSettings, setFontFamily } from "$lib/stores";
 
-	let settings = false;
+	$: settings = $readerSettings;
+
+	const unsubscribe = readerSettings.subscribe((value) => {
+		settings = settings;
+	});
+
+	let showSettings = false;
 	$: innerWidth = 0;
 	let index = 0;
 	let root;
-	$: textSize = [30];
+	$readerSettings.fontSize = 30;
+	$readerSettings.fontFamily = "Inter";
+
+	console.log($readerSettings);
+	$: textSize = [$readerSettings.fontSize];
+	console.log($readerSettings.fontSize);
 	let mounted = false;
 	$: navINdex = 0;
 	$: if (innerWidth > 900) {
@@ -19,7 +32,8 @@
 	} else {
 		navINdex = index;
 	}
-	$: font = "Inter";
+	$: font = $readerSettings.fontFamily;
+	console.log(font);
 
 	export let data;
 
@@ -28,58 +42,68 @@
 	$: length = 100;
 
 	$: if (mounted) {
-		length = paginate(content, index, textSize);
+		length = paginate(content, index, textSize, font);
 	}
 
 	function toggleSettings() {
-		settings = !settings;
+		showSettings = !showSettings;
 	}
 
 	function next() {
 		if (index < length) {
 			index++;
-			paginate(content, index, textSize);
+			paginate(content, index, textSize, font);
 		}
 	}
 	function previous() {
 		if (index > 0) {
 			index--;
-			paginate(content, index, textSize);
+			paginate(content, index, textSize, font);
 		}
 	}
 
 	onMount(() => {
 		mounted = true;
 
-		length = paginate(content, index, textSize);
+		length = paginate(content, index, textSize, font);
+		console.log($readerSettings);
 
 		const resizeObserver = new ResizeObserver(() => {
-			length = paginate(content, index, textSize);
+			length = paginate(content, index, textSize, font);
 		});
 
 		resizeObserver.observe(root);
 
 		return () => resizeObserver.unobserve(root);
 	});
+	onDestroy(() => {
+		unsubscribe();
+	});
 </script>
 
 <svelte:window bind:innerWidth />
 
-{#if settings}
-	<Settings {toggleSettings} {innerWidth} bind:size={textSize} bind:font />
+{#if showSettings}
+	<Settings
+		{toggleSettings}
+		{innerWidth}
+		bind:size={$readerSettings.fontSize}
+		bind:font={$readerSettings.fontFamily}
+	/>
 {/if}
-<IssueaNav
-	title={data.slug}
-	{toggleSettings}
-	{next}
-	{previous}
-	index={navINdex}
-	bind:length
-/>
 {#if innerWidth > 900}
+	<IssueaNav
+		title={data.slug}
+		{toggleSettings}
+		{next}
+		{previous}
+		index={navINdex}
+		bind:length
+	/>
 	<VerticalRule />
 {:else}
-	<MobileFooter {index} />
+	<MobileTop {index} toggleMenu={toggleSettings} />
+	<MobileZineNav {index} {next} {previous} {length} />
 {/if}
 <div class="root_container" style="--font: {font};" bind:this={root}></div>
 
@@ -92,11 +116,10 @@
 	}
 	.root_container {
 		display: flex;
-		height: calc(100dvh - 70px);
+		height: calc(100dvh - 140px);
 		width: 100%;
 		top: 70px;
 		position: relative;
 		overflow-x: hidden;
-		font-family: var(--font);
 	}
 </style>

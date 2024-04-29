@@ -1,11 +1,8 @@
 <script>
   import { createSelect, melt } from "@melt-ui/svelte";
-  import { createEventDispatcher } from "svelte";
   export let font;
 
-  const dispach = createEventDispatcher();
-
-  $: selFont = $selectedLabel;
+  const fonts = ["Inter", "Courier New", "Times New Roman"];
 
   const {
     elements: { trigger, menu, option, label },
@@ -18,20 +15,10 @@
       fitViewport: true,
       sameWidth: true,
     },
-    defaultSelected: font,
+    defaultSelected: { value: font, label: font },
   });
 
-  console.log(font);
-  $: console.log($selectedLabel);
-
-  const fonts = ["Inter", "Courier New", "Times New Roman"];
-
-  $: {
-    dispach("la", { selFont });
-    font = selFont;
-  }
-
-  font = selFont;
+  $: font = $selectedLabel;
 </script>
 
 <div class="flex flex-col gap-1 text-sm">
@@ -47,7 +34,7 @@
   </button>
   {#if $open}
     <div
-      class=" z-10 flex max-h-[300px] flex-col
+      class="z-12 flex max-h-[300px] flex-col
     overflow-y-auto rounded-lg bg-white p-1
     shadow focus:!ring-0"
       use:melt={$menu}
@@ -55,7 +42,7 @@
       {#each fonts as item}
         <div
           class="relative cursor-pointer rounded-lg py-1 pl-8 pr-4 text-neutral-800
-              hover:bg-magnum-100 focus:z-10
+              hover:bg-magnum-100 focus:z-12
               focus:text-magnum-700
               data-[highlighted]:bg-magnum-200 data-[highlighted]:text-magnum-900
               data-[disabled]:opacity-50"
@@ -75,10 +62,13 @@
     position: absolute;
     left: theme(spacing.2);
     top: 50%;
-    z-index: theme(zIndex.20);
+    z-index: 14;
     translate: 0 calc(-50% + 1px);
   }
   button {
     border: none;
+  }
+  div {
+    z-index: 12;
   }
 </style>

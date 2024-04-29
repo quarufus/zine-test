@@ -1,22 +1,20 @@
 <script>
 	export let index;
+	export let next;
+	export let previous;
 
 	const title = ["Home", "Zines", "About", "Contact"];
 </script>
 
 <ul>
 	<li class="left">
-		{#if index.index > 0}
-			<a href="/{title[index.index - 1].toLowerCase()}"
-				>&lt- {title[index.index - 1]}</a
-			>
+		{#if index > 0}
+			<button on:click={previous}>&lt- {title[index - 1]}</button>
 		{/if}
 	</li>
 	<li class="right">
-		{#if index.index < 3}
-			<a href="/{title[index.index + 1].toLowerCase()}"
-				>{title[index.index + 1]} -></a
-			>
+		{#if index < title.length}
+			<button on:click={next}>{title[index + 1]} -></button>
 		{/if}
 	</li>
 </ul>
@@ -32,6 +30,7 @@
 		position: fixed;
 		width: 100%;
 		background-color: var(--bg);
+		z-index: 1;
 	}
 	.left {
 		text-align: left;
