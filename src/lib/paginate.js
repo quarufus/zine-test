@@ -2,7 +2,7 @@
 
 export function paginate(htmlDocument, index, textSize, font) {
 	let width = window.innerWidth / 2;
-	let margin = 200;
+	let margin = 50;
 	if (window.innerWidth < 900) {
 		width = window.innerWidth;
 		margin = 50;
@@ -26,7 +26,7 @@ function getNodes(htmlDocument, innerWidth, margin, textSize, height, font) {
 	offscreenDiv.style.fontSize =
 		`${((innerWidth / 20000) * textSize).toString()}em`;
 	offscreenDiv.style.fontFamily = font;
-	offscreenDiv.style.width = `${(innerWidth - margin).toString()}px`;
+	offscreenDiv.style.width = `calc(${(innerWidth - margin).toString()}px - 5%)`;
 	document.body.appendChild(offscreenDiv);
 	let offscreenRect = offscreenDiv.getBoundingClientRect();
 	//console.log("offscreenRect:", offscreenRect);
@@ -83,7 +83,7 @@ function appendChunks({ chunks, innerWidth, margin, textSize, font }, index) {
 		page.style.borderTop = "1px solid black";
 		page.style.fontSize =
 			`${((innerWidth / 20000) * textSize).toString()}em`;
-		page.style.width = `${(innerWidth - margin).toString()}px`;
+		page.style.width = `calc(${(innerWidth - margin).toString()}px - 5%)`;
 		page.style.fontFamily = font;
 		for (const element of chunk) {page.appendChild(element)};
 			container.appendChild(page);

@@ -65,7 +65,7 @@
 	onMount(() => {
 		mounted = true;
 
-		length = paginate(content, index, textSize, "Abhaya Libre");
+		length = paginate(content, index, textSize, font);
 		console.log($readerSettings);
 
 		const resizeObserver = new ResizeObserver(() => {
@@ -118,11 +118,7 @@
 	<MobileTop {index} toggleMenu={toggleSettings} />
 	<MobileZineNav {index} {next} {previous} {length} />
 {/if}
-<div
-	class="root_container"
-	style="--font: {'Abhaya Libre'};"
-	bind:this={root}
-></div>
+<div class="root_container" style="--font: {font};" bind:this={root}></div>
 
 <style>
 	:root {
@@ -133,10 +129,16 @@
 	}
 	.root_container {
 		display: flex;
-		height: calc(100dvh - 140px);
+		height: calc(100dvh - 100px);
 		width: 100%;
 		top: 70px;
 		position: relative;
 		overflow-x: hidden;
+		padding: 0 10%;
+	}
+	@media only screen and (min-width: 900) {
+		.root_container {
+			height: calc(100dvh - 140px);
+		}
 	}
 </style>
