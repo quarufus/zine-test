@@ -65,7 +65,7 @@
 	onMount(() => {
 		mounted = true;
 
-		length = paginate(content, index, textSize, font);
+		length = paginate(content, index, textSize, "Abhaya Libre");
 		console.log($readerSettings);
 
 		const resizeObserver = new ResizeObserver(() => {
@@ -82,6 +82,19 @@
 </script>
 
 <svelte:window bind:innerWidth />
+
+<svelte:head>
+	<title>To Bitoni | {data.slug}</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Fira Code"
+	/>
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Literata"
+	/>
+</svelte:head>
 
 {#if showSettings}
 	<Settings
@@ -105,7 +118,11 @@
 	<MobileTop {index} toggleMenu={toggleSettings} />
 	<MobileZineNav {index} {next} {previous} {length} />
 {/if}
-<div class="root_container" style="--font: {font};" bind:this={root}></div>
+<div
+	class="root_container"
+	style="--font: {'Abhaya Libre'};"
+	bind:this={root}
+></div>
 
 <style>
 	:root {

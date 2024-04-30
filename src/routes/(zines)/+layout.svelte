@@ -35,6 +35,15 @@
 
 <svelte:head>
 	<title>To Bitoni | {pages[$store.index]}</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Courier Prime"
+	/>
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Abhaya Libre"
+	/>
 </svelte:head>
 
 <main style="--bg: #f9f9f9" class="h-full">

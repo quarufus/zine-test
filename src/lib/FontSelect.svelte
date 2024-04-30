@@ -2,7 +2,7 @@
   import { createSelect, melt } from "@melt-ui/svelte";
   export let font;
 
-  const fonts = ["Inter", "Courier New", "Times New Roman"];
+  const fonts = ["Inter", "Fira Code", "Literata"];
 
   const {
     elements: { trigger, menu, option, label },
