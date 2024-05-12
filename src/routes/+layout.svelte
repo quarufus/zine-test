@@ -6,7 +6,7 @@
 
 <style>
 	:root {
-		--bg: #f9f9f9;
+		--bg: #f3e7db;
 		--accent: black;
 		--border: 2px solid var(--accent);
 		font-family: Inter;
