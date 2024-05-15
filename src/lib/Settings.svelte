@@ -51,7 +51,7 @@
 		<br />
 		<li><h2>Text size: {size}</h2></li>
 		<li>
-			<Slider min={10} max={70} bind:defaultValue={size}></Slider>
+			<Slider min={10} max={30} bind:defaultValue={size}></Slider>
 		</li>
 		<br />
 		<li><h2>Text spacing</h2></li>

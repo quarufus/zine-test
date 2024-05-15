@@ -1,21 +1,21 @@
-import {writable} from 'svelte/store';
+import { writable } from "svelte/store";
 
 export const store = writable({
-  index: 0
+  index: 0,
 });
 
-export function setIndex(index) {
+export function setIndex(index: number) {
   store.set({
-    index: index
+    index: index,
   });
   index = index;
 }
 
 export const readerSettings = writable({
-  theme: 'Dark',
-  fontFamily: '',
+  theme: "Dark",
+  fontFamily: "",
   fontSize: 0,
-  letterSpacing: 12
+  letterSpacing: 12,
 });
 
 export function setReaderSettings(settings) {
@@ -23,14 +23,14 @@ export function setReaderSettings(settings) {
     theme: settings.theme,
     fontFamily: settings.fontFamily,
     fontSize: settings.fontSize,
-    letterSpacing: settings.letterSpacing
+    letterSpacing: settings.letterSpacing,
   });
   settings = settings;
 }
 
 export function setTheme(theme) {
   readerSettings.set({
-    theme: theme
+    theme: theme,
   });
   theme = theme;
 }
@@ -38,7 +38,7 @@ export function setTheme(theme) {
 export function setFontFamily(fontFamily) {
   //console.log(fontFamily);
   readerSettings.set({
-    fontFamily: fontFamily
+    fontFamily: fontFamily,
   });
   fontFamily = fontFamily;
 }
@@ -53,7 +53,7 @@ export function setFontSize(fontSize) {
 
 export function setLetterSpacing(letterSpacing) {
   readerSettings.set({
-    letterSpacing: letterSpacing
+    letterSpacing: letterSpacing,
   });
   letterSpacing = letterSpacing;
 }

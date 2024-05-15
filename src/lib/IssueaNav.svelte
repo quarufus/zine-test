@@ -16,14 +16,16 @@
 <svelte:window bind:innerWidth />
 
 <ul>
-	<li>
+	<li id="one">
 		{#if index > 0}
 			<button on:click={previous}>&lt- Previous</button>
 		{/if}
 	</li>
-	<li class="right"><button on:click={toggleSettings}>Settings</button></li>
-	<li class="left">Issue {title} | {index + 2}</li>
-	<li class="right">
+	<li class="right cent">
+		<button on:click={toggleSettings}>Settings</button>
+	</li>
+	<li class="left cent">Issue {title} | {index + 2}</li>
+	<li class="right" id="last">
 		{#if index < myLength - 1}
 			<button on:click={next}>Next -></button>
 		{/if}
@@ -36,9 +38,22 @@
 		display: flex;
 		border-bottom: 0px solid black;
 		margin: 0;
-		padding: 0;
+		padding-bottom: 4px;
 		position: fixed;
 		width: 100%;
+		z-index: 10;
+		border-bottom: 5px solid black;
+	}
+	button {
+		border: none;
+		padding-bottom: 5px;
+	}
+	button:hover {
+		border-bottom: 5px solid black;
+		padding-bottom: 0px;
+	}
+	.cent {
+		padding: 20px 50px 0 50px;
 	}
 	.left {
 		text-align: left;
@@ -48,9 +63,14 @@
 		align-items: right;
 	}
 	li {
-		padding: 20px 100px;
 		float: left;
 		width: 25%;
 		font-weight: 500;
+	}
+	#one {
+		padding: 20px 20px 0 10%;
+	}
+	#last {
+		padding: 20px 10% 0 20px;
 	}
 </style>
