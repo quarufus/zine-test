@@ -13,7 +13,7 @@ export function getChunks(fontFamily: string, fontSize: number) {
   sourceDiv.style.width = `calc(${viewportWidth / 2}px - 10% - 50px)`;
 
   renderDiv.style.height = `calc(${viewportHeight}px - 140px)`;
-  sourceDiv.style.height = `calc(${viewportHeight}px - 140px)`;
+  //sourceDiv.style.height = `calc(${viewportHeight}px - 140px)`;
 
   renderDiv = style(renderDiv, fontFamily, fontSize);
   sourceDiv = style(sourceDiv, fontFamily, fontSize);
@@ -92,7 +92,7 @@ export function getChunks(fontFamily: string, fontSize: number) {
   for (const i in pages) {
     pages[i].style.width = "100%";
     //page.style.borderTop = "1px solid blue";
-    pages[i].style.height = "calc(100%)";
+    pages[i].style.height = "100%";
 
     pages[i] = style(pages[i], fontFamily, fontSize);
     if (i % 2 === 0) {
@@ -113,8 +113,7 @@ export function getChunks(fontFamily: string, fontSize: number) {
 
 function style(element: HTMLElement, font: string, fontSize: number) {
   element.style.position = "absolute";
-  element.style.width = "calc(50%)";
-  //element.style.margin = "10px";
+  element.style.width = "50%";
   element.style.padding = "90px 50px 70px 10%";
   element.style.lineHeight = "1.5";
   element.style.fontFamily = font;
@@ -130,4 +129,18 @@ function fully(element: HTMLElement) {
   element.style.height = "100%";
   element.style.top = "0";
   element.style.left = "0";
+}
+
+class Page {
+  element: HTMLElement;
+  alignment: number;
+
+  style(font: string, size: number) {
+    element.style.position = "absolute";
+    element.style.width = "calc(50%)";
+    element.style.padding = "90px 50px 70px 10%";
+    element.style.lineHeight = "1.5";
+    element.style.fontFamily = font;
+    element.style.fontSize = `${size}px`;
+  }
 }

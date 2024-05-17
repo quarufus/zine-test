@@ -35,7 +35,7 @@
 	<title>To Bitoni | {pages[$store.index]}</title>
 </svelte:head>
 
-<main style="--bg: #f9f9f9">
+<main>
 	{#if menu}
 		<Menu {toggleMenu} {innerWidth} />
 	{/if}

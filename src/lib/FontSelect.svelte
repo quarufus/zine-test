@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
   import { createSelect, melt } from "@melt-ui/svelte";
-  export let font;
+  import { readerSettings } from "$lib/stores";
+  export let font: string;
 
   const fonts = ["Inter", "Fira Code", "Literata"];
 
@@ -19,6 +20,8 @@
   });
 
   $: font = $selectedLabel;
+  $: $readerSettings.fontFamily = $selectedLabel;
+  $: console.log(font);
 </script>
 
 <div class="flex flex-col gap-1 text-sm">

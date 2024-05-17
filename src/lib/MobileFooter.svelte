@@ -13,7 +13,7 @@
 		{/if}
 	</li>
 	<li class="right">
-		{#if index < title.length}
+		{#if index < title.length - 1}
 			<button on:click={next}>{title[index + 1]} -></button>
 		{/if}
 	</li>

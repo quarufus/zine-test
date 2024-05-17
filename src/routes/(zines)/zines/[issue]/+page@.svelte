@@ -3,12 +3,13 @@
   import Settings from "$lib/Settings.svelte";
   import VerticalRule from "$lib/VerticalRule.svelte";
   import { onDestroy, onMount } from "svelte";
-  import One from "$lib/zines/One.html?raw";
   import { getChunks } from "$lib/pages";
   import MobileZineNav from "$lib/MobileZineNav.svelte";
   import MobileTop from "$lib/MobileTop.svelte";
   import { readerSettings } from "$lib/stores";
   import First from "$lib/zines/One.svelte";
+  import Second from "$lib/zines/Two.svelte";
+  export let data;
 
   $: settings = $readerSettings;
 
@@ -30,10 +31,8 @@
   } else {
     navINdex = index;
   }
-  $: font = $readerSettings.fontFamily;
-  $: fontSize = $readerSettings.fontSize;
-
-  export let data;
+  $: font = settings.fontFamily;
+  $: fontSize = settings.fontSize;
 
   let chunks: HTMLElement[];
   $: chunks = [];
@@ -43,8 +42,6 @@
   $: if (mounted) {
     index;
     chunks;
-    //chunks = paginate(content, textSize, font);
-    //console.log(chunks);
     root_container.innerHTML = "";
     for (let chunk of getVisibleChunks()) {
       root_container?.appendChild(chunk);
@@ -60,13 +57,11 @@
   function next() {
     if (index < length) {
       index++;
-      //paginate(content, index, textSize, font);
     }
   }
   function previous() {
     if (index > 0) {
       index--;
-      //paginate(content, index, textSize, font);
     }
   }
   function getVisibleChunks() {
@@ -85,15 +80,11 @@
   onMount(() => {
     mounted = true;
 
-    chunks = getChunks(font, fontSize); //paginate(content, textSize, font);
-    //console.log(chunks);
-
+    chunks = getChunks(font, fontSize);
     root_container = document.getElementById("root_container")!;
 
-    //console.log($readerSettings);
-
     const resizeObserver = new ResizeObserver(() => {
-      chunks = getChunks(font, fontSize); //paginate(content, textSize, font);
+      chunks = getChunks(font, fontSize);
     });
 
     resizeObserver.observe(root);
@@ -124,8 +115,8 @@
   <Settings
     {toggleSettings}
     {innerWidth}
-    bind:size={$readerSettings.fontSize}
-    bind:font={$readerSettings.fontFamily}
+    bind:size={settings.fontSize}
+    bind:font={settings.fontFamily}
   />
 {/if}
 {#if innerWidth > 900}
@@ -142,17 +133,16 @@
   <MobileTop {index} toggleMenu={toggleSettings} />
   <MobileZineNav {index} {next} {previous} {length} />
 {/if}
-<!--<div id="source">{@html One}</div>-->
-<!--<div id="render"></div>-->
-<!--<div
-  class="root_container"
-  id="root_container"
-  style="--font: {font};"
-  bind:this={root}
-></div>-->
-<p class="page fullPage" style="display: none;"></p>
 
-<First />
+<div bind:this={root} id="source">
+  {#if data.slug == "One"}
+    <First />
+  {:else if data.slug == "Two"}
+    <Second />
+  {/if}
+</div>
+<div id="render"></div>
+<div class="root_container" id="root_container"></div>
 
 <style>
   :root {
@@ -161,26 +151,13 @@
   :global(body) {
     margin: 0;
   }
-  p {
-    font-size: var(--fontSize);
-    font-family: var(--fontFamily);
-  }
-  .page {
-    border-top: 1px solid blue;
-    color: red;
-    height: calc(100vh - 100px);
-    padding: 10px;
-  }
   #source {
     position: absolute;
     top: -30000px;
-    height: calc(100vh - 100px);
-    width: calc(100vw / 2);
   }
   #render {
     position: absolute;
     top: -30000px;
-    height: calc(100vh - 100px);
   }
   .root_container {
     display: flex;
@@ -188,20 +165,7 @@
     width: 100%;
     position: relative;
     overflow-x: hidden;
-    /*padding: 70px 10% 20px 10%;*/
     text-align: justify;
     line-height: 1.5;
-  }
-  @media only screen and (max-width: 900px) {
-    .root_container {
-      height: calc(100dvh - 140px);
-    }
-  }
-  .fullPage {
-    height: 100%;
-    position: absolute;
-    width: 50%;
-    left: 0;
-    top: 0;
   }
 </style>

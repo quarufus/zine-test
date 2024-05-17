@@ -46,7 +46,7 @@
 	/>
 </svelte:head>
 
-<main style="--bg: #f9f9f9" class="h-full">
+<main class="h-full">
 	{#if menu}
 		<Menu {toggleMenu} {innerWidth} />
 	{/if}
