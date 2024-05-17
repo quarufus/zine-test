@@ -5,6 +5,7 @@
 
 <div class="p-10" style="--img: {img}">
     <h1 class="p-[5px]">Περιοδικά</h1>
+    <img src={img} alt="img" />
     <div
         class="grid grid-cols-2 sm:grid-cols-3 min-[900px]:grid-cols-2 xl:grid-cols-3"
     >

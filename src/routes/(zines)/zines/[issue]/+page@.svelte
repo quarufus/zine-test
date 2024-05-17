@@ -8,6 +8,7 @@
   import MobileZineNav from "$lib/MobileZineNav.svelte";
   import MobileTop from "$lib/MobileTop.svelte";
   import { readerSettings } from "$lib/stores";
+  import First from "$lib/zines/One.svelte";
 
   $: settings = $readerSettings;
 
@@ -141,17 +142,17 @@
   <MobileTop {index} toggleMenu={toggleSettings} />
   <MobileZineNav {index} {next} {previous} {length} />
 {/if}
-<div id="source">{@html One}</div>
-<div id="render"></div>
-<div
+<!--<div id="source">{@html One}</div>-->
+<!--<div id="render"></div>-->
+<!--<div
   class="root_container"
   id="root_container"
   style="--font: {font};"
   bind:this={root}
-></div>
+></div>-->
 <p class="page fullPage" style="display: none;"></p>
 
-<!--<First />-->
+<First />
 
 <style>
   :root {
