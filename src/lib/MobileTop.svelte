@@ -1,12 +1,10 @@
 <script lang="ts">
-	export let index;
 	export let toggleMenu;
-
-	const titles = ["Home", "Zines", "About", "Contact", "End"];
+	export let title: string;
 </script>
 
 <ul class="fixed w-full bg-white z-10 top-0">
-	<li id="title">{titles[index.index]}</li>
+	<li id="title">{title}</li>
 	<li id="burger"><button on:click={toggleMenu}>Menu</button></li>
 </ul>
 

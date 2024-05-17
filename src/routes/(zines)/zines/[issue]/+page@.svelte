@@ -10,6 +10,7 @@
   import First from "$lib/zines/One.svelte";
   import Second from "$lib/zines/Two.svelte";
   export let data;
+  let title = data.slug;
 
   $: settings = $readerSettings;
 
@@ -130,7 +131,7 @@
   />
   <VerticalRule />
 {:else}
-  <MobileTop {index} toggleMenu={toggleSettings} />
+  <MobileTop toggleMenu={toggleSettings} title="{data.slug} | {index}" />
   <MobileZineNav {index} {next} {previous} {length} />
 {/if}
 

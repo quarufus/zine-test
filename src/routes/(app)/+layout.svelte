@@ -5,6 +5,7 @@
 	import MobileFooter from "$lib/MobileFooter.svelte";
 	import VerticalRule from "$lib/VerticalRule.svelte";
 	import { store, setIndex } from "$lib/stores";
+	import { createScrollArea, melt } from "@melt-ui/svelte";
 
 	let index = setIndex(0);
 
@@ -27,6 +28,13 @@
 	}
 
 	const pages = ["Home", "Zines", "About", "Contact", "End"];
+
+	const {
+		elements: { root, content, viewport, corner, scrollbarY, thumbY },
+	} = createScrollArea({
+		type: "scroll",
+		dir: "ltr",
+	});
 </script>
 
 <svelte:window bind:innerWidth />
@@ -44,8 +52,25 @@
 		<VerticalRule />
 		<slot />
 	{:else}
-		<MobileTop {toggleMenu} bind:index={$store} />
-		<slot />
+		<MobileTop {toggleMenu} title={pages[$store.index]} />
+		<div
+			use:melt={$root}
+			id="fuck"
+			class="relative h-[calc(100dvh - 71px)] w-full overflow-hidden"
+		>
+			<div use:melt={$viewport} class="h-full w-full">
+				<div use:melt={$content}>
+					<slot />
+				</div>
+			</div>
+			<div
+				use:melt={$scrollbarY}
+				class="flex h-full w-2.5 touch-none select-none border-l border-l-transparent bg-neutral-300/10 p-px transition-colors"
+			>
+				<div use:melt={$thumbY} class="relative flex-1 rounded-full bg-black" />
+			</div>
+			<div use:melt={$corner} />
+		</div>
 		<MobileFooter bind:index={$store.index} {next} {previous} />
 	{/if}
 </main>
@@ -56,5 +81,8 @@
 	}
 	:global(body) {
 		margin: 0;
+	}
+	#fuck {
+		height: calc(100dvh - 71px);
 	}
 </style>

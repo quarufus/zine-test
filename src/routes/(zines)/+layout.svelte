@@ -55,7 +55,7 @@
 		<VerticalRule />
 		<slot />
 	{:else}
-		<MobileTop {toggleMenu} bind:index={$store} />
+		<MobileTop {toggleMenu} title={pages[$store.index]} />
 		<slot />
 		<MobileFooter bind:index={$store.index} {next} {previous} />
 	{/if}
