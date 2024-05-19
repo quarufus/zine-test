@@ -10,7 +10,6 @@
   import First from "$lib/zines/One.svelte";
   import Second from "$lib/zines/Two.svelte";
   export let data;
-  let title = data.slug;
 
   $: settings = $readerSettings;
 
@@ -45,11 +44,12 @@
     chunks;
     root_container.innerHTML = "";
     for (let chunk of getVisibleChunks()) {
-      root_container?.appendChild(chunk);
+      if (chunk != null) root_container?.appendChild(chunk);
     }
   }
 
-  $: if (mounted) chunks = getChunks(font, fontSize);
+  $: if (mounted)
+    getChunks(font, fontSize).then((value: HTMLElement[]) => (chunks = value));
 
   function toggleSettings() {
     showSettings = !showSettings;
@@ -81,11 +81,13 @@
   onMount(() => {
     mounted = true;
 
-    chunks = getChunks(font, fontSize);
+    getChunks(font, fontSize).then((value: HTMLElement[]) => (chunks = value));
     root_container = document.getElementById("root_container")!;
 
     const resizeObserver = new ResizeObserver(() => {
-      chunks = getChunks(font, fontSize);
+      getChunks(font, fontSize).then(
+        (value: HTMLElement[]) => (chunks = value),
+      );
     });
 
     resizeObserver.observe(root);

@@ -3,8 +3,6 @@
   export let next;
   export let previous;
   export let length;
-
-  const title = ["Home", "Zines", "About", "Contact"];
 </script>
 
 <ul>
@@ -41,7 +39,7 @@
     align-items: right;
   }
   li {
-    padding: 20px;
+    padding: 10px;
     float: left;
     width: 50%;
     font-weight: 500;

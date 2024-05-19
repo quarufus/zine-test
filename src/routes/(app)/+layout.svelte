@@ -83,6 +83,6 @@
 		margin: 0;
 	}
 	#fuck {
-		height: calc(100dvh - 71px);
+		height: calc(100dvh - 70px);
 	}
 </style>

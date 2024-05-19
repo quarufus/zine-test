@@ -15,8 +15,8 @@ export function getChunks(fontFamily: string, fontSize: number) {
   renderDiv.style.height = `calc(${viewportHeight}px - 140px)`;
   //sourceDiv.style.height = `calc(${viewportHeight}px - 140px)`;
 
-  renderDiv = style(renderDiv, fontFamily, fontSize);
-  sourceDiv = style(sourceDiv, fontFamily, fontSize);
+  renderDiv = style(renderDiv, fontFamily, fontSize, viewportWidth);
+  sourceDiv = style(sourceDiv, fontFamily, fontSize, viewportWidth);
 
   const pages: HTMLElement[] = [];
 
@@ -94,26 +94,37 @@ export function getChunks(fontFamily: string, fontSize: number) {
     //page.style.borderTop = "1px solid blue";
     pages[i].style.height = "100%";
 
-    pages[i] = style(pages[i], fontFamily, fontSize);
-    if (i % 2 === 0) {
-      pages[i].style.padding = "90px 50px 70px 10%";
-      if (pages[i].children[0].classList.contains("fullPage")) {
-        pages[i].children[0].style.padding = "90px 50px 70px 20%";
+    pages[i] = style(pages[i], fontFamily, fontSize, viewportWidth);
+    if (viewportWidth > 900) {
+      if (i % 2 === 0) {
+        pages[i].style.padding = "90px 50px 70px 10%";
+        if (pages[i].children[0].classList.contains("fullPage")) {
+          pages[i].children[0].style.padding = "90px 50px 70px 20%";
+        }
+      } else {
+        pages[i].style.padding = "90px 10% 70px 50px";
+        pages[i].style.left = "calc(50% + 1px)";
+        if (pages[i].children[0].classList.contains("fullPage")) {
+          pages[i].children[0].style.padding = "90px 20% 70px 50px";
+        }
       }
     } else {
-      pages[i].style.padding = "90px 10% 70px 50px";
-      pages[i].style.left = "calc(50% + 1px)";
+      pages[i].style.padding = "90px 10%";
       if (pages[i].children[0].classList.contains("fullPage")) {
-        pages[i].children[0].style.padding = "90px 20% 70px 50px";
+        pages[i].children[0].style.padding = "90px 10%";
       }
     }
   }
-  return pages;
+  return Promise.resolve(pages);
 }
 
-function style(element: HTMLElement, font: string, fontSize: number) {
+function style(element: HTMLElement, font: string, fontSize: number, v: number) {
   element.style.position = "absolute";
+  if (v > 900) {
   element.style.width = "50%";
+  } else {
+    element.style.width = "100%";
+  }
   element.style.padding = "90px 50px 70px 10%";
   element.style.lineHeight = "1.5";
   element.style.fontFamily = font;
