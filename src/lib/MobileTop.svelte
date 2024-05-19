@@ -1,11 +1,12 @@
 <script lang="ts">
 	export let toggleMenu;
-	export let title: string;
+	export let title = "Bitoni";
+	export let button: string;
 </script>
 
 <ul class="fixed w-full bg-white z-10 top-0">
 	<li id="title">{title}</li>
-	<li id="burger"><button on:click={toggleMenu}>Menu</button></li>
+	<li id="burger"><button on:click={toggleMenu}>{button}</button></li>
 </ul>
 
 <style>

@@ -1,4 +1,4 @@
-export function getChunks(fontFamily: string, fontSize: number) {
+export function getChunks(fontFamily: string, fontSize: number, spacing: number) {
   let sourceDiv = document.getElementById("source");
   const contentDiv = document.getElementById("root_container");
   let renderDiv = document.getElementById("render");
@@ -15,8 +15,8 @@ export function getChunks(fontFamily: string, fontSize: number) {
   renderDiv.style.height = `calc(${viewportHeight}px - 140px)`;
   //sourceDiv.style.height = `calc(${viewportHeight}px - 140px)`;
 
-  renderDiv = style(renderDiv, fontFamily, fontSize, viewportWidth);
-  sourceDiv = style(sourceDiv, fontFamily, fontSize, viewportWidth);
+  renderDiv = style(renderDiv, fontFamily, fontSize, spacing, viewportWidth);
+  sourceDiv = style(sourceDiv, fontFamily, fontSize, spacing, viewportWidth);
 
   const pages: HTMLElement[] = [];
 
@@ -94,7 +94,7 @@ export function getChunks(fontFamily: string, fontSize: number) {
     //page.style.borderTop = "1px solid blue";
     pages[i].style.height = "100%";
 
-    pages[i] = style(pages[i], fontFamily, fontSize, viewportWidth);
+    pages[i] = style(pages[i], fontFamily, fontSize, spacing, viewportWidth);
     if (viewportWidth > 900) {
       if (i % 2 === 0) {
         pages[i].style.padding = "90px 50px 70px 10%";
@@ -118,7 +118,7 @@ export function getChunks(fontFamily: string, fontSize: number) {
   return Promise.resolve(pages);
 }
 
-function style(element: HTMLElement, font: string, fontSize: number, v: number) {
+function style(element: HTMLElement, font: string, fontSize: number, spacing: number, v: number) {
   element.style.position = "absolute";
   if (v > 900) {
   element.style.width = "50%";
@@ -129,6 +129,7 @@ function style(element: HTMLElement, font: string, fontSize: number, v: number) 
   element.style.lineHeight = "1.5";
   element.style.fontFamily = font;
   element.style.fontSize = `${fontSize}px`;
+  element.style.letterSpacing = `${spacing}px`;
 
   return element;
 }

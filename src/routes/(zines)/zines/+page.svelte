@@ -24,7 +24,27 @@
 	<Pages>
 		<Home slot="left" />
 		<div slot="right" class="m-0">
-			<Zines />
+			<div
+				use:melt={$root}
+				id="fuck"
+				class="relative h-[calc(100dvh - 71px)] w-full overflow-hidden"
+			>
+				<div use:melt={$viewport} class="h-full w-full">
+					<div use:melt={$content}>
+						<Zines />
+					</div>
+				</div>
+				<div
+					use:melt={$scrollbarY}
+					class="flex h-full w-2.5 touch-none select-none border-l border-l-transparent bg-neutral-300/10 p-px transition-colors"
+				>
+					<div
+						use:melt={$thumbY}
+						class="relative flex-1 rounded-full bg-black"
+					/>
+				</div>
+				<div use:melt={$corner} />
+			</div>
 		</div>
 	</Pages>
 {:else}

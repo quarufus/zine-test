@@ -4,13 +4,12 @@
 	import Menu from "$lib/Menu.svelte";
 	import MobileFooter from "$lib/MobileFooter.svelte";
 	import VerticalRule from "$lib/VerticalRule.svelte";
-	import { store, setIndex, setFontSize, readerSettings } from "$lib/stores";
+	import { store, setIndex } from "$lib/stores";
+	import { onDestroy } from "svelte";
 
 	let index = setIndex(0);
-	setFontSize(30);
-	console.log($readerSettings.fontSize);
 
-	const unsubscribeIndex = store.subscribe((value) => {
+	const unsubscribeIndex = store.subscribe(() => {
 		index = index;
 	});
 
@@ -19,16 +18,8 @@
 	function toggleMenu() {
 		menu = !menu;
 	}
-
-	function next() {
-		location.href = pages[$store.index + 1].toLowerCase();
-	}
-
-	function previous() {
-		location.href = pages[$store.index - 1].toLowerCase();
-	}
-
 	const pages = ["Home", "Zines", "About", "Contact", "End"];
+	onDestroy(unsubscribeIndex);
 </script>
 
 <svelte:window bind:innerWidth />
@@ -51,13 +42,13 @@
 		<Menu {toggleMenu} {innerWidth} />
 	{/if}
 	{#if innerWidth > 900}
-		<Top {toggleMenu} bind:index={$store} />
+		<Top {toggleMenu} bind:index={$store.index} />
 		<VerticalRule />
 		<slot />
 	{:else}
-		<MobileTop {toggleMenu} title={pages[$store.index]} />
+		<MobileTop {toggleMenu} button="Menu" />
 		<slot />
-		<MobileFooter bind:index={$store.index} {next} {previous} />
+		<MobileFooter bind:index={$store.index} />
 	{/if}
 </main>
 

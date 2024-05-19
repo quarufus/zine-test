@@ -1,11 +1,7 @@
 <script lang="ts">
-	import { createSlider, melt } from "@melt-ui/svelte";
-	import { createEventDispatcher } from "svelte";
 	import FontSelect from "./FontSelect.svelte";
 	import Slider from "./Slider.svelte";
-	import { setFontSize, readerSettings, setReaderSettings } from "$lib/stores";
-
-	const dispach = createEventDispatcher();
+	import { readerSettings } from "$lib/stores";
 
 	export let toggleSettings;
 	export let innerWidth: number;
@@ -13,18 +9,8 @@
 	export let font: string;
 
 	let width: number;
-	//$: textSize = 10;
-	//let settings = $readerSettings;
-	//$: setReaderSettings(settings);
-	//let fontSize = [settings.fontSize];
-	//$: setFontSize(fontSize[0]);
 	$: $readerSettings.fontSize = size;
 	$: $readerSettings.fontFamily = font;
-
-	//$: {
-	//	dispach("fontChange", { textSize });
-	//	size = textSize;
-	//}
 
 	$: if (innerWidth > 900) {
 		width = 50;
@@ -43,19 +29,31 @@
 	<button id="close" on:click={toggleSettings}>Close</button>
 	<ul class="text-[11vmin]">
 		<li>
-			<h2>Theme</h2>
+			<FontSelect
+				title="Theme"
+				bind:selected={$readerSettings.theme}
+				selections={["Default", "Dark", "Other"]}
+			/>
 		</li>
 		<li>
-			<FontSelect bind:font />
+			<FontSelect
+				title="Font"
+				bind:selected={$readerSettings.fontFamily}
+				selections={["Inter", "Fira Code", "Literata"]}
+			/>
 		</li>
-		<br />
-		<li><h2>Text size: {size}</h2></li>
 		<li>
-			<Slider min={10} max={30} bind:defaultValue={size}></Slider>
+			<h2>Text size: {size}</h2>
+			<Slider min={10} max={30} bind:defaultValue={size} />
 		</li>
-		<br />
-		<li><h2>Text spacing</h2></li>
-		<li></li>
+		<li>
+			<h2>Text spacing: {$readerSettings.letterSpacing + 1}</h2>
+			<Slider
+				min={0}
+				max={9}
+				bind:defaultValue={$readerSettings.letterSpacing}
+			/>
+		</li>
 	</ul>
 </div>
 
@@ -64,10 +62,13 @@
 		width: calc(var(--width) - 1px);
 		position: absolute;
 		height: 100%;
-		background-color: #f9f9f9;
+		background-color: var(--bg);
 		z-index: 11;
 		text-align: left;
 		font-family: var(--font);
+	}
+	li {
+		height: 20vh;
 	}
 	#close {
 		text-align: right;
@@ -78,7 +79,7 @@
 		float: left;
 	}
 	ul {
-		margin: 100px 25px;
+		margin: 100px 15% 0 15%;
 	}
 	button {
 		margin: 20px;

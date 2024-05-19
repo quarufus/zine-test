@@ -4,6 +4,7 @@
 <!--<div id="right"></div>-->
 
 <style>
+  /*
   #left {
     width: 47px;
     height: 100%;
@@ -12,6 +13,7 @@
     position: absolute;
     left: 47px;
   }
+  */
   div {
     background-color: var(--accent);
     width: 2px;
@@ -21,6 +23,7 @@
     left: calc(50% - 1px);
     position: fixed;
   }
+  /*
   #right {
     width: 68px;
     height: 100%;
@@ -32,4 +35,5 @@
       #000 100%
     );
   }
+  */
 </style>

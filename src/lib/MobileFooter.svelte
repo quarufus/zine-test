@@ -1,7 +1,5 @@
-<script>
-	export let index;
-	export let next;
-	export let previous;
+<script lang="ts">
+	export let index: number;
 
 	const title = ["Home", "Zines", "About", "Contact"];
 </script>
@@ -9,12 +7,12 @@
 <ul>
 	<li class="left">
 		{#if index > 0}
-			<button on:click={previous}>&lt- {title[index - 1]}</button>
+			<a href="/{title[index - 1].toLowerCase()}">&lt- {title[index - 1]}</a>
 		{/if}
 	</li>
 	<li class="right">
 		{#if index < title.length - 1}
-			<button on:click={next}>{title[index + 1]} -></button>
+			<a href="/{title[index + 1].toLowerCase()}">{title[index + 1]} -></a>
 		{/if}
 	</li>
 </ul>

@@ -1,29 +1,25 @@
 <script lang="ts">
-	export let index;
-	export let toggleMenu;
+	export let index: number;
+	export let toggleMenu = () => {};
 
 	const title = ["Start", "Home", "Zines", "About", "Contact", "End"];
 </script>
 
 <ul>
 	<li class="left">
-		{#if index.index > 0}
-			{#if title[index.index - 1] == "Start"}
-				<a href="/home">&lt- {title[index.index - 1]}</a>
+		{#if index > 0}
+			{#if title[index - 1] == "Start"}
+				<a href="/home">&lt- {title[index - 1]}</a>
 			{:else}
-				<a href="/{title[index.index].toLowerCase()}"
-					>&lt- {title[index.index - 1]}</a
-				>
+				<a href="/{title[index].toLowerCase()}">&lt- {title[index - 1]}</a>
 			{/if}
 		{/if}
 	</li>
 	<li class="right"><button on:click={toggleMenu}>Menu</button></li>
-	<li class="left">{title[index.index + 1]}</li>
+	<li class="left">Bitoni</li>
 	<li class="right">
-		{#if index.index < 4}
-			<a href="/{title[index.index + 2].toLowerCase()}"
-				>{title[index.index + 2]} -></a
-			>
+		{#if index < 4}
+			<a href="/{title[index + 2].toLowerCase()}">{title[index + 2]} -></a>
 		{/if}
 	</li>
 </ul>

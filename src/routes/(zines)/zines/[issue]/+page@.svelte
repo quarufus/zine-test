@@ -21,8 +21,6 @@
   $: innerWidth = 0;
   let index: number = 0;
   let root: Element;
-  $readerSettings.fontSize = 17;
-  $readerSettings.fontFamily = "Inter";
 
   let mounted = false;
   $: navINdex = 0;
@@ -31,8 +29,6 @@
   } else {
     navINdex = index;
   }
-  $: font = settings.fontFamily;
-  $: fontSize = settings.fontSize;
 
   let chunks: HTMLElement[];
   $: chunks = [];
@@ -49,7 +45,11 @@
   }
 
   $: if (mounted)
-    getChunks(font, fontSize).then((value: HTMLElement[]) => (chunks = value));
+    getChunks(
+      settings.fontFamily,
+      settings.fontSize,
+      settings.letterSpacing,
+    ).then((value: HTMLElement[]) => (chunks = value));
 
   function toggleSettings() {
     showSettings = !showSettings;
@@ -81,13 +81,19 @@
   onMount(() => {
     mounted = true;
 
-    getChunks(font, fontSize).then((value: HTMLElement[]) => (chunks = value));
+    getChunks(
+      settings.fontFamily,
+      settings.fontSize,
+      settings.letterSpacing,
+    ).then((value: HTMLElement[]) => (chunks = value));
     root_container = document.getElementById("root_container")!;
 
     const resizeObserver = new ResizeObserver(() => {
-      getChunks(font, fontSize).then(
-        (value: HTMLElement[]) => (chunks = value),
-      );
+      getChunks(
+        settings.fontFamily,
+        settings.fontSize,
+        settings.letterSpacing,
+      ).then((value: HTMLElement[]) => (chunks = value));
     });
 
     resizeObserver.observe(root);
@@ -114,38 +120,44 @@
   />
 </svelte:head>
 
-{#if showSettings}
-  <Settings
-    {toggleSettings}
-    {innerWidth}
-    bind:size={settings.fontSize}
-    bind:font={settings.fontFamily}
-  />
-{/if}
-{#if innerWidth > 900}
-  <IssueaNav
-    title={data.slug}
-    {toggleSettings}
-    {next}
-    {previous}
-    index={navINdex}
-    bind:length
-  />
-  <VerticalRule />
-{:else}
-  <MobileTop toggleMenu={toggleSettings} title="{data.slug} | {index}" />
-  <MobileZineNav {index} {next} {previous} {length} />
-{/if}
-
-<div bind:this={root} id="source">
-  {#if data.slug == "One"}
-    <First />
-  {:else if data.slug == "Two"}
-    <Second />
+<main>
+  {#if showSettings}
+    <Settings
+      {toggleSettings}
+      {innerWidth}
+      bind:size={settings.fontSize}
+      bind:font={settings.fontFamily}
+    />
   {/if}
-</div>
-<div id="render"></div>
-<div class="root_container" id="root_container"></div>
+  {#if innerWidth > 900}
+    <IssueaNav
+      title={data.slug}
+      {toggleSettings}
+      {next}
+      {previous}
+      index={navINdex}
+      bind:length
+    />
+    <VerticalRule />
+  {:else}
+    <MobileTop
+      toggleMenu={toggleSettings}
+      title="{data.slug} | {index}"
+      button="Settings"
+    />
+    <MobileZineNav {index} {next} {previous} {length} />
+  {/if}
+
+  <div bind:this={root} id="source">
+    {#if data.slug == "One"}
+      <First />
+    {:else if data.slug == "Two"}
+      <Second />
+    {/if}
+  </div>
+  <div id="render"></div>
+  <div class="root_container" id="root_container"></div>
+</main>
 
 <style>
   :root {

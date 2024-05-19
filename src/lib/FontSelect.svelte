@@ -1,7 +1,9 @@
 <script lang="ts">
   import { createSelect, melt } from "@melt-ui/svelte";
   import { readerSettings } from "$lib/stores";
-  export let font: string;
+  export let selections: string[] = [];
+  export let selected: string;
+  export let title: string;
 
   const fonts = ["Inter", "Fira Code", "Literata"];
 
@@ -16,19 +18,17 @@
       fitViewport: true,
       sameWidth: true,
     },
-    defaultSelected: { value: font, label: font },
+    defaultSelected: { value: selected, label: selected },
   });
 
-  $: font = $selectedLabel;
-  $: $readerSettings.fontFamily = $selectedLabel;
-  $: console.log(font);
+  $: selected = $selectedLabel;
 </script>
 
 <div class="flex flex-col gap-1 text-sm">
   <!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
-  <label class="block text-3xl" use:melt={$label}>Font</label>
+  <label class="block text-3xl" use:melt={$label}>{title}</label>
   <button
-    class="flex h-10 min-w-[220px] items-center justify-between rounded-lg bg-white px-3 py-2
+    class="flex h-10 min-w-[220px] items-center justify-between rounded-lg bg-black text-white px-3 py-2
   text-magnum-700 shadow transition-opacity hover:opacity-90"
     use:melt={$trigger}
     aria-label="Food"
@@ -38,13 +38,13 @@
   {#if $open}
     <div
       class="z-12 flex max-h-[300px] flex-col
-    overflow-y-auto rounded-lg bg-white p-1
+    overflow-y-auto rounded-lg bg-black text-white p-1
     shadow focus:!ring-0"
       use:melt={$menu}
     >
-      {#each fonts as item}
+      {#each selections as item}
         <div
-          class="relative cursor-pointer rounded-lg py-1 pl-8 pr-4 text-neutral-800
+          class="relative cursor-pointer rounded-lg py-1 pl-8 pr-4
               hover:bg-magnum-100 focus:z-12
               focus:text-magnum-700
               data-[highlighted]:bg-magnum-200 data-[highlighted]:text-magnum-900
