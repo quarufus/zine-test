@@ -6,7 +6,7 @@
 
 <style>
   :root {
-    --bg: #f3e7db;
+    --bg: #f4efea; /*#f3e7db;*/
     --accent: black;
     --border: 2px solid var(--accent);
     font-family: Inter;
@@ -14,6 +14,9 @@
   :global(body) {
     margin: 0;
     font-family: Inter;
+  }
+  :global(p) {
+    font-weight: 100;
   }
   :global(h1) {
     font-family: Durer;

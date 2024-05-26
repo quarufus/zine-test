@@ -42,7 +42,7 @@
 		position: fixed;
 		width: 100%;
 		z-index: 10;
-		border-bottom: 5px solid black;
+		border-bottom: 5px solid var(--accent);
 	}
 	button {
 		border: none;
