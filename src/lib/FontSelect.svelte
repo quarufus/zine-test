@@ -1,11 +1,9 @@
 <script lang="ts">
   import { createSelect, melt } from "@melt-ui/svelte";
-  import { readerSettings } from "$lib/stores";
+  import Dot from "lucide-svelte/icons/dot";
   export let selections: string[] = [];
   export let selected: string;
   export let title: string;
-
-  const fonts = ["Inter", "Fira Code", "Literata"];
 
   const {
     elements: { trigger, menu, option, label },
@@ -24,9 +22,9 @@
   $: selected = $selectedLabel;
 </script>
 
-<div class="flex flex-col gap-1 text-sm">
+<div class="flex flex-col gap-1">
   <!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
-  <label class="block text-3xl" use:melt={$label}>{title}</label>
+  <label class="block text-[2em]" use:melt={$label}>{title}</label>
   <button
     class="flex h-10 min-w-[220px] items-center justify-between rounded-lg bg-black text-white px-3 py-2
   text-magnum-700 shadow transition-opacity hover:opacity-90"
@@ -51,7 +49,9 @@
               data-[disabled]:opacity-50"
           use:melt={$option({ value: item, label: item })}
         >
-          <div class="check {$isSelected(item) ? 'block' : 'hidden'}">~</div>
+          <div class="check {$isSelected(item) ? 'block' : 'hidden'}">
+            <Dot />
+          </div>
 
           {item}
         </div>

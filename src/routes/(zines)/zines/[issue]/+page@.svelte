@@ -12,9 +12,12 @@
   export let data;
 
   $: settings = $readerSettings;
+  let mounted = false;
 
-  const unsubscribe = readerSettings.subscribe(() => {
+  const unsubscribe = readerSettings.subscribe((value) => {
     settings = settings;
+    if (mounted)
+      getChunks(value.fontFamily, value.fontSize, value.letterSpacing);
   });
 
   let showSettings: boolean = false;
@@ -22,7 +25,6 @@
   let index: number = 0;
   let root: Element;
 
-  let mounted = false;
   $: navINdex = 0;
   $: if (innerWidth > 900) {
     navINdex = index * 2;
@@ -43,13 +45,6 @@
       if (chunk != null) root_container?.appendChild(chunk);
     }
   }
-
-  $: if (mounted)
-    getChunks(
-      settings.fontFamily,
-      settings.fontSize,
-      settings.letterSpacing,
-    ).then((value: HTMLElement[]) => (chunks = value));
 
   function toggleSettings() {
     showSettings = !showSettings;
@@ -81,11 +76,6 @@
   onMount(() => {
     mounted = true;
 
-    getChunks(
-      settings.fontFamily,
-      settings.fontSize,
-      settings.letterSpacing,
-    ).then((value: HTMLElement[]) => (chunks = value));
     root_container = document.getElementById("root_container")!;
 
     const resizeObserver = new ResizeObserver(() => {
@@ -100,9 +90,7 @@
 
     return () => resizeObserver.unobserve(root);
   });
-  onDestroy(() => {
-    unsubscribe();
-  });
+  onDestroy(unsubscribe);
 </script>
 
 <svelte:window bind:innerWidth />
@@ -122,12 +110,7 @@
 
 <main>
   {#if showSettings}
-    <Settings
-      {toggleSettings}
-      {innerWidth}
-      bind:size={settings.fontSize}
-      bind:font={settings.fontFamily}
-    />
+    <Settings {toggleSettings} {innerWidth} />
   {/if}
   {#if innerWidth > 900}
     <IssueaNav

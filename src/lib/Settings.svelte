@@ -5,12 +5,10 @@
 
 	export let toggleSettings;
 	export let innerWidth: number;
-	export let size: number;
-	export let font: string;
 
 	let width: number;
-	$: $readerSettings.fontSize = size;
-	$: $readerSettings.fontFamily = font;
+
+	console.log($readerSettings);
 
 	$: if (innerWidth > 900) {
 		width = 50;
@@ -19,7 +17,10 @@
 	}
 </script>
 
-<div style="--width: {width}%; --font: {font};" class="h-dvh">
+<div
+	style="--width: {width}%; --font: {$readerSettings.fontFamily}; --size: calc({$readerSettings.fontSize}px * 0.7)"
+	class="h-dvh"
+>
 	<button
 		id="exit"
 		on:click={() => {
@@ -43,8 +44,8 @@
 			/>
 		</li>
 		<li>
-			<h2>Text size: {size}</h2>
-			<Slider min={10} max={30} bind:defaultValue={size} />
+			<h2>Text size: {$readerSettings.fontSize}</h2>
+			<Slider min={10} max={30} bind:defaultValue={$readerSettings.fontSize} />
 		</li>
 		<li>
 			<h2>Text spacing: {$readerSettings.letterSpacing + 1}</h2>
@@ -68,7 +69,7 @@
 		font-family: var(--font);
 	}
 	li {
-		height: 20vh;
+		height: 22vh;
 	}
 	#close {
 		text-align: right;
@@ -79,12 +80,36 @@
 		float: left;
 	}
 	ul {
-		margin: 100px 15% 0 15%;
+		margin: 100px 50px 0 20%;
+	}
+	ul > li {
+		font-size: 0.875rem;
 	}
 	button {
 		margin: 20px;
 	}
 	h2 {
-		font-size: 2rem;
+		font-size: 2em;
+	}
+	#close {
+		margin: 20px 50px 0 50px;
+	}
+	#exit {
+		margin: 20px 20px 0 20%;
+	}
+	@media only screen and (max-width: 900px) {
+		div {
+			width: var(--width);
+		}
+		ul {
+			margin: 100px 10%;
+		}
+		ul > li {
+			font-size: var(--size);
+		}
+		#close,
+		#exit {
+			margin: 20px;
+		}
 	}
 </style>
