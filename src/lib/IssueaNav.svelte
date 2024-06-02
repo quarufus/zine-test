@@ -1,5 +1,7 @@
 <script>
+	import { DoorClosed } from "lucide-svelte";
 	import { DoorOpen } from "lucide-svelte";
+	import { onMount } from "svelte";
 	export let title;
 	export let toggleSettings;
 	export let next;
@@ -12,6 +14,17 @@
 	$: if (innerWidth > 900 && length % 2 == 0) {
 		myLength = length - 1;
 	}
+	let hover = false;
+
+	onMount(() => {
+		const icon = document.getElementById("icon");
+		icon?.addEventListener("mouseover", () => {
+			hover = true;
+		});
+		icon?.addEventListener("mouseout", () => {
+			hover = false;
+		});
+	});
 </script>
 
 <svelte:window bind:innerWidth />
@@ -24,11 +37,19 @@
 	</li>
 	<li class="right cent" id="sett">
 		<button
+			id="icon"
+			title="Close"
 			class="p-0"
 			on:click={() => {
 				location.href = "/zines";
-			}}><DoorOpen /></button
+			}}
 		>
+			{#if hover}
+				<DoorOpen />
+			{:else}
+				<DoorClosed />
+			{/if}
+		</button>
 		<button on:click={toggleSettings}>Options</button>
 	</li>
 	<li class="left cent">Issue {title} | {index + 2}</li>

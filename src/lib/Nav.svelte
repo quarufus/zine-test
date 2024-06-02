@@ -3,13 +3,10 @@
 
   export let index: number;
   const title = ["Start", "Home", "Zines", "About", "Contact", "End"];
-  $: left = index == 0 ? true : false;
-  $: right = index == 3 ? true : false;
 </script>
 
 <div id="ul">
   <div class="arrow" id="left">
-    <div class:active={left} />
     {#if index > 0}
       {#if title[index] == "Start"}
         <a href="/home">&lt- {title[index]}</a>
@@ -39,7 +36,6 @@
     >
   </div>
   <div class="arrow" id="right">
-    <div class:active={right} />
     {#if index < 3}
       <a href="/{title[index + 2].toLowerCase()}">{title[index + 2]} -&gt</a>
     {/if}
@@ -62,7 +58,7 @@
   div:has(> a.active) {
     background-color: black;
   }
-  .active {
+  div:has(> div) .active {
     font-weight: 900;
     color: white;
   }
