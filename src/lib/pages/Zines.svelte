@@ -9,7 +9,7 @@
     >
         {#each zines as zine}
             <button
-                class="m-2.5 p-2.5 h-68 border-2-solid-black cursor-pointer"
+                class="m-2.5 p-2.5 h-68 border-2-solid-black cursor-pointer text-center"
                 on:click={() => {
                     location.href = "/zines/" + zine;
                 }}

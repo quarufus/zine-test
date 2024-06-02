@@ -59,7 +59,6 @@
     background-color: black;
   }
   div:has(> div) .active {
-    font-weight: 900;
     color: white;
   }
   #ul > div {
@@ -84,8 +83,5 @@
   }
   .active:hover {
     border-bottom: 5px solid white;
-  }
-  a:active {
-    font-weight: 900;
   }
 </style>
