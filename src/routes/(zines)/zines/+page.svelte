@@ -2,6 +2,7 @@
 	import Pages from "$lib/Pages.svelte";
 	import SinglePage from "$lib/SinglePage.svelte";
 	import Home from "$lib/pages/Home.svelte";
+	import swan from "$lib/zines/swan.jpg";
 	import Zines from "$lib/pages/Zines.svelte";
 	import { setIndex } from "$lib/stores";
 	import { createScrollArea, melt } from "@melt-ui/svelte";
@@ -22,7 +23,14 @@
 
 {#if innerWidth > 900}
 	<Pages>
-		<div slot="left" />
+		<!--<div slot="left" style:background-image={swan} />-->
+		<div slot="left" class="left">
+			<img
+				src={swan}
+				alt="swan"
+				class="object-cover object-top w-full h-full mt-[-64px]"
+			/>
+		</div>
 		<div slot="right" class="m-0">
 			<div
 				use:melt={$root}
@@ -56,5 +64,8 @@
 <style>
 	#fuck {
 		height: calc(100dvh - 71px);
+	}
+	.left {
+		height: 100vh;
 	}
 </style>

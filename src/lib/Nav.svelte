@@ -9,7 +9,7 @@
 
 <div id="ul">
   <div class="arrow" id="left">
-    <a class:active={left} />
+    <div class:active={left} />
     {#if index > 0}
       {#if title[index] == "Start"}
         <a href="/home">&lt- {title[index]}</a>
@@ -39,7 +39,7 @@
     >
   </div>
   <div class="arrow" id="right">
-    <a class:active={right} />
+    <div class:active={right} />
     {#if index < 3}
       <a href="/{title[index + 2].toLowerCase()}">{title[index + 2]} -&gt</a>
     {/if}
@@ -56,6 +56,8 @@
     justify-content: space-between;
     border-bottom: var(--border);
     height: 64px;
+    backdrop-filter: blur(10px);
+    position: absolute;
   }
   div:has(> a.active) {
     background-color: black;
