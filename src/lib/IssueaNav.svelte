@@ -1,4 +1,5 @@
 <script>
+	import { DoorOpen } from "lucide-svelte";
 	export let title;
 	export let toggleSettings;
 	export let next;
@@ -21,8 +22,14 @@
 			<button on:click={previous}>&lt- Previous</button>
 		{/if}
 	</li>
-	<li class="right cent">
-		<button on:click={toggleSettings}>Settings</button>
+	<li class="right cent" id="sett">
+		<button
+			class="p-0"
+			on:click={() => {
+				location.href = "/zines";
+			}}><DoorOpen /></button
+		>
+		<button on:click={toggleSettings}>Options</button>
 	</li>
 	<li class="left cent">Issue {title} | {index + 2}</li>
 	<li class="right" id="last">
@@ -43,6 +50,7 @@
 		width: 100%;
 		z-index: 10;
 		border-bottom: 5px solid var(--accent);
+		height: 64px;
 	}
 	button {
 		border: none;
@@ -72,5 +80,9 @@
 	}
 	#last {
 		padding: 20px 10% 0 20px;
+	}
+	#sett > button {
+		float: right;
+		margin-left: 50px;
 	}
 </style>

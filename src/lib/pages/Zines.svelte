@@ -3,9 +3,9 @@
 </script>
 
 <div class="p-10">
-    <h1 class="p-[5px]">Περιοδικά</h1>
+    <h1 class="my-5">Περιοδικά</h1>
     <div
-        class="grid grid-cols-2 sm:grid-cols-3 min-[900px]:grid-cols-2 max-[450px]:grid-cols-1 xl:grid-cols-3"
+        class="grid grid-cols-2 sm:grid-cols-3 min-[900px]:grid-cols-2 max-[450px]:grid-cols-1 xl:grid-cols-3 mx-[-10px]"
     >
         {#each zines as zine}
             <button

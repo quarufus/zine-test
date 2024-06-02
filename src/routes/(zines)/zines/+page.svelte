@@ -8,7 +8,7 @@
 
 	setIndex(1);
 	let zines = ["One", "Two", "Three", "Four", "Five"];
-	$: innerWidth = 0;
+	$: innerWidth = 901;
 
 	const {
 		elements: { root, content, viewport, corner, scrollbarY, thumbY },
@@ -22,7 +22,7 @@
 
 {#if innerWidth > 900}
 	<Pages>
-		<Home slot="left" />
+		<div slot="left" />
 		<div slot="right" class="m-0">
 			<div
 				use:melt={$root}

@@ -1,5 +1,10 @@
+<script>
+  export let full = false;
+  let top = full ? "0" : "64px";
+</script>
+
 <!--<div id="left"></div>-->
-<div></div>
+<div style="--top: {top}"></div>
 
 <!--<div id="right"></div>-->
 
@@ -17,7 +22,7 @@
   div {
     background-color: var(--accent);
     width: 2px;
-    top: 0;
+    top: var(--top);
     position: absolute;
     height: 100%;
     left: calc(50% - 1px);

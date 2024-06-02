@@ -143,7 +143,7 @@
 <p>
   Και να που τσιμπολογάτε λαίμαργα όλα μαζί ένα μπάγκελ με σολωμό και αβοκάντο
 </p>
-<p>
+<p class="rotate-90 translate-y-20 translate-x-20 text-[10px] w-10">
   Και να που περνάνε, το ένα πίσω από το άλλο, κουτσουλημένα, ένα φίατ πάντα,
   μία πόρσε καγιέν, μια χαγιαμπούζα του 80 και ένα βόλβο ντόμπλο.
 </p>
@@ -249,9 +249,9 @@
   No pun intended.
 </p>
 
-<div class="h-[1000px] bg-[#769e65] fullPage text-[45vw]">
+<div class="h-[1000px] bg-[#769e65] fullPage text-[40vw]">
   <p class="leading-none font-serif">Ά</p>
 </div>
 
-<img src={c1} alt="Comic page one" />
-<img src={c2} alt="Comic page two" />
+<img src={c1} alt="Comic page one" class="h-full m-auto" />
+<img src={c2} alt="Comic page two" class="h-full m-auto" />

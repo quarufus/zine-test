@@ -121,7 +121,7 @@
       index={navINdex}
       bind:length
     />
-    <VerticalRule />
+    <VerticalRule full={true} />
   {:else}
     <MobileTop
       toggleMenu={toggleSettings}

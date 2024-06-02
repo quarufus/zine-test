@@ -3,7 +3,6 @@
 	import Slider from "./Slider.svelte";
 	import { readerSettings } from "$lib/stores";
 
-	export let toggleSettings;
 	export let innerWidth: number;
 
 	let width: number;
@@ -21,13 +20,6 @@
 	style="--width: {width}%; --font: {$readerSettings.fontFamily}; --size: calc({$readerSettings.fontSize}px * 0.7)"
 	class="h-dvh"
 >
-	<button
-		id="exit"
-		on:click={() => {
-			location.href = "/zines";
-		}}>Exit</button
-	>
-	<button id="close" on:click={toggleSettings}>Close</button>
 	<ul class="text-[11vmin]">
 		<li>
 			<FontSelect
@@ -62,7 +54,8 @@
 	div {
 		width: calc(var(--width) - 1px);
 		position: absolute;
-		height: 100%;
+		top: 64px;
+		height: calc(100% - 64px);
 		background-color: var(--bg);
 		z-index: 11;
 		text-align: left;
@@ -71,31 +64,14 @@
 	li {
 		height: 22vh;
 	}
-	#close {
-		text-align: right;
-		float: right;
-	}
-	#exit {
-		text-align: right;
-		float: left;
-	}
 	ul {
-		margin: 100px 50px 0 20%;
+		margin: 26px 50px 0 20%;
 	}
 	ul > li {
 		font-size: 0.875rem;
 	}
-	button {
-		margin: 20px;
-	}
 	h2 {
 		font-size: 2em;
-	}
-	#close {
-		margin: 20px 50px 0 50px;
-	}
-	#exit {
-		margin: 20px 20px 0 20%;
 	}
 	@media only screen and (max-width: 900px) {
 		div {
@@ -106,10 +82,6 @@
 		}
 		ul > li {
 			font-size: var(--size);
-		}
-		#close,
-		#exit {
-			margin: 20px;
 		}
 	}
 </style>

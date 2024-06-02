@@ -2,21 +2,31 @@
   import "../app.pcss";
 </script>
 
+<svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@100..900&family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
 <slot />
 
 <style>
   :root {
-    --bg: #f4efea; /*#f3e7db;*/
+    --bg: #fff; /*#f3e7db;*/
     --accent: black;
     --border: 2px solid var(--accent);
     font-family: Inter;
   }
   :global(body) {
     margin: 0;
-    font-family: Inter;
+    /*font-family: Inter;*/
   }
   :global(p) {
-    font-weight: 100;
+    font-weight: 300;
+    font-size: 1.3em;
   }
   :global(h1) {
     font-family: Durer;

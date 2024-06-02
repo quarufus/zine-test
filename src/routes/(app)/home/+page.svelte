@@ -20,7 +20,7 @@
 
 {#if innerWidth > 900}
 	<Pages>
-		<Cover slot="left" />
+		<div slot="left" />
 		<Home slot="right" />
 	</Pages>
 {:else}

@@ -13,7 +13,7 @@
 
 {#if innerWidth > 900}
 	<Pages>
-		<About slot="left" />
+		<div slot="left" />
 		<Contact slot="right" />
 	</Pages>
 {:else}
@@ -21,4 +21,3 @@
 		<Contact slot="content" />
 	</SinglePage>
 {/if}
-
