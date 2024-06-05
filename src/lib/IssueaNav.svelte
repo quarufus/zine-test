@@ -30,12 +30,21 @@
 <svelte:window bind:innerWidth />
 
 <ul>
-	<li id="one">
+	<li id="one" class="w-[25%]">
 		{#if index > 0}
 			<button on:click={previous}>&lt- Previous</button>
 		{/if}
 	</li>
-	<li class="right cent" id="sett">
+	<li class="right cent w-[25%]" id="sett">
+		<button on:click={toggleSettings}>Options</button>
+	</li>
+	<li class="left cent w-[25%]" id="title">Issue {title}</li>
+	<li class="right w-[15%]" id="last">
+		{#if index < myLength - 1}
+			<button on:click={next}>Next -></button>
+		{/if}
+	</li>
+	<li class="right w-[10%]" id="exit">
 		<button
 			id="icon"
 			title="Close"
@@ -50,13 +59,6 @@
 				<DoorClosed />
 			{/if}
 		</button>
-		<button on:click={toggleSettings}>Options</button>
-	</li>
-	<li class="left cent">Issue {title} | {index + 2}</li>
-	<li class="right" id="last">
-		{#if index < myLength - 1}
-			<button on:click={next}>Next -></button>
-		{/if}
 	</li>
 </ul>
 
@@ -64,13 +66,12 @@
 	ul {
 		list-style: none;
 		display: flex;
-		border-bottom: 0px solid black;
 		margin: 0;
 		padding-bottom: 4px;
 		position: fixed;
 		width: 100%;
 		z-index: 10;
-		border-bottom: 5px solid var(--accent);
+		/*border-bottom: 5px solid var(--accent);*/
 		height: 64px;
 	}
 	button {
@@ -91,19 +92,32 @@
 		text-align: right;
 		align-items: right;
 	}
+	/*
 	li {
 		float: left;
-		width: 25%;
 		font-weight: 500;
 	}
+	*/
 	#one {
-		padding: 20px 20px 0 10%;
+		padding: 20px 0 0 0;
+		width: 15%;
+		margin-left: 10%;
 	}
 	#last {
-		padding: 20px 10% 0 20px;
+		padding: 20px 0 0 20px;
 	}
 	#sett > button {
 		float: right;
 		margin-left: 50px;
+	}
+	#exit {
+		padding: 20px 2% 0 2%;
+	}
+	#one,
+	#sett,
+	#title,
+	#last {
+		border-bottom: 2px solid black;
+		padding-bottom: 5px;
 	}
 </style>

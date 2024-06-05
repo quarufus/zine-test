@@ -2,6 +2,7 @@
 	import FontSelect from "./FontSelect.svelte";
 	import Slider from "./Slider.svelte";
 	import { readerSettings } from "$lib/stores";
+	import ScrollArea from "$lib/ScrollArea.svelte";
 
 	export let innerWidth: number;
 
@@ -18,36 +19,42 @@
 
 <div
 	style="--width: {width}%; --font: {$readerSettings.fontFamily}; --size: calc({$readerSettings.fontSize}px * 0.7)"
-	class="h-dvh"
+	class=""
 >
-	<ul class="text-[11vmin]">
-		<li>
-			<FontSelect
-				title="Theme"
-				bind:selected={$readerSettings.theme}
-				selections={["Default", "Dark", "Other"]}
-			/>
-		</li>
-		<li>
-			<FontSelect
-				title="Font"
-				bind:selected={$readerSettings.fontFamily}
-				selections={["Inter", "Fira Code", "Literata"]}
-			/>
-		</li>
-		<li>
-			<h2>Text size: {$readerSettings.fontSize}</h2>
-			<Slider min={10} max={30} bind:defaultValue={$readerSettings.fontSize} />
-		</li>
-		<li>
-			<h2>Text spacing: {$readerSettings.letterSpacing + 1}</h2>
-			<Slider
-				min={0}
-				max={9}
-				bind:defaultValue={$readerSettings.letterSpacing}
-			/>
-		</li>
-	</ul>
+	<ScrollArea>
+		<ul class="text-[11vmin]">
+			<li>
+				<FontSelect
+					title="Theme"
+					bind:selected={$readerSettings.theme}
+					selections={["Default", "Dark", "Other"]}
+				/>
+			</li>
+			<li>
+				<FontSelect
+					title="Font"
+					bind:selected={$readerSettings.fontFamily}
+					selections={["Inter", "Fira Code", "Literata"]}
+				/>
+			</li>
+			<li>
+				<h2>Text size: {$readerSettings.fontSize}</h2>
+				<Slider
+					min={10}
+					max={30}
+					bind:defaultValue={$readerSettings.fontSize}
+				/>
+			</li>
+			<li>
+				<h2>Text spacing: {$readerSettings.letterSpacing + 1}</h2>
+				<Slider
+					min={0}
+					max={9}
+					bind:defaultValue={$readerSettings.letterSpacing}
+				/>
+			</li>
+		</ul>
+	</ScrollArea>
 </div>
 
 <style>
@@ -62,7 +69,7 @@
 		font-family: var(--font);
 	}
 	li {
-		height: 22vh;
+		height: 26vh;
 	}
 	ul {
 		margin: 26px 50px 0 20%;
