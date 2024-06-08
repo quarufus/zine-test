@@ -26,6 +26,7 @@
 
 <svelte:head>
 	<title>To Bitoni | {pages[$store.index]}</title>
+	<meta property="og:description" content="A magazine" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
 	<link
 		rel="stylesheet"

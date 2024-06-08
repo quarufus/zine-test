@@ -27,6 +27,7 @@
 
 <svelte:head>
 	<title>To Bitoni | {pages[$store.index]}</title>
+	<meta property="og:description" content="A magazine" />
 </svelte:head>
 
 <main>

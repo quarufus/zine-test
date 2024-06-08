@@ -11,6 +11,13 @@
 
 <svelte:window bind:innerWidth />
 
+<svelte:head>
+	<meta
+		name="description"
+		content="Contact page for To Bitoni, a webzine focused on art"
+	/>
+</svelte:head>
+
 {#if innerWidth > 900}
 	<Pages>
 		<div slot="left" />

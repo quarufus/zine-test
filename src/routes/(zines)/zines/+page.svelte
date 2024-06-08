@@ -21,6 +21,13 @@
 
 <svelte:window bind:innerWidth />
 
+<svelte:head>
+	<meta
+		name="description"
+		content="Zines page for To Bitoni, a webzine focused on art"
+	/>
+</svelte:head>
+
 {#if innerWidth > 900}
 	<Pages>
 		<!--<div slot="left" style:background-image={swan} />-->
