@@ -35,9 +35,12 @@
   <br />
   <br />
   <p>
-    Για περισσότερες ανακοινώσεις και ενημερώσεις, κάνε εγγραφή στο newsletter
-    μας:
+    Για περισσότερες ανακοινώσεις και ενημερώσεις, κάνε <a
+      href="http://eepurl.com/iR5dt6">στο newsletter</a
+    >
+    μας.
   </p>
+  <!--
   <form method="PUT" on:submit|preventDefault={subscribe} class="my-5">
     <input
       type="email"
@@ -47,4 +50,5 @@
     />
     <button type="submit" class="relative top-[-5px] mx-5">Εγγραφή</button>
   </form>
+  -->
 </div>
