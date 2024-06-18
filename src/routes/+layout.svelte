@@ -37,24 +37,34 @@
   :global(button) {
     all: unset;
     cursor: pointer;
-    border-bottom: 5px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: 0.1s;
   }
   :global(a) {
     all: unset;
     cursor: pointer;
-    border-bottom: 5px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: 0.1s;
+  }
+  :global(a:hover) {
+    border-bottom: 5px solid black;
+    transition: 0.1s;
+  }
+  :global(button:hover) {
+    border-bottom: 5px solid black;
+    transition: 0.1s;
   }
   @font-face {
     font-family: Durer;
