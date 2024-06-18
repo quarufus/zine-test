@@ -1,26 +1,4 @@
 <script lang="ts">
-  let email = "";
-
-  async function subscribe(event) {
-    event.preventDefault();
-
-    console.log("lalala");
-    const response: Response = await fetch("/api", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-    console.log("ae");
-    const result = await response.json();
-    if (response.ok) {
-      email = "";
-      alert("Subscription successful");
-    } else {
-      alert("Error: " + result.error);
-    }
-  }
 </script>
 
 <div class="p-10">
@@ -40,15 +18,4 @@
     >
     μας.
   </p>
-  <!--
-  <form method="PUT" on:submit|preventDefault={subscribe} class="my-5">
-    <input
-      type="email"
-      bind:value={email}
-      required
-      class="border-black border-2 p-1.5"
-    />
-    <button type="submit" class="relative top-[-5px] mx-5">Εγγραφή</button>
-  </form>
-  -->
 </div>
