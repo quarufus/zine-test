@@ -27,7 +27,8 @@
     padding: 0;
     bottom: 0;
     position: fixed;
-    width: 100%;
+    width: 100dvw;
+    height: 50px;
     background-color: var(--bg);
     z-index: 1;
   }

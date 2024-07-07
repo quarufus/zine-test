@@ -4,7 +4,7 @@
 	export let button: string;
 </script>
 
-<ul class="fixed w-full bg-white z-10 top-0">
+<ul class="fixed w-[100dvw] h-[64px] bg-white z-10 top-0">
 	<li id="title">{title}</li>
 	<li id="burger"><button on:click={toggleMenu}>{button}</button></li>
 </ul>

@@ -164,6 +164,9 @@
   :global(body) {
     margin: 0;
   }
+  main {
+    width: 100%;
+  }
   #source {
     position: absolute;
     top: -30000px;
@@ -175,7 +178,7 @@
   .root_container {
     display: flex;
     height: 100dvh;
-    width: 100%;
+    width: 100dvw;
     position: relative;
     overflow-x: hidden;
     text-align: justify;
