@@ -23,6 +23,6 @@
 <style>
     button {
         border: 2px solid black;
-        height: 17rem;
+        aspect-ratio: 1 / 1.61803;
     }
 </style>

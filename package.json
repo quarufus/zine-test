@@ -22,6 +22,7 @@
 		"@types/eslint": "^8.56.7",
 		"@types/noisejs": "^0.0.31",
 		"autoprefixer": "^10.4.16",
+		"drab": "^5.4.2",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
@@ -41,6 +42,7 @@
 	"type": "module",
 	"dependencies": {
 		"lucide-svelte": "^0.379.0",
-		"noisejs": "^2.1.0"
+		"noisejs": "^2.1.0",
+		"svelte-gestures": "^5.0.1"
 	}
 }

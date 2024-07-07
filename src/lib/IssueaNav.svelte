@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
 	import { DoorClosed } from "lucide-svelte";
 	import { DoorOpen } from "lucide-svelte";
+	import { Expand } from "lucide-svelte";
+	import { Shrink } from "lucide-svelte";
 	import { onMount } from "svelte";
 	export let title;
 	export let toggleSettings;
@@ -16,7 +18,15 @@
 	}
 	let hover = false;
 
-	onMount(() => {
+	function toggleFullscreen() {
+		if (!document.fullscreenElement) {
+			document.documentElement.requestFullscreen();
+		} else {
+			document.exitFullscreen();
+		}
+	}
+
+	onMount(async () => {
 		const icon = document.getElementById("icon");
 		icon?.addEventListener("mouseover", () => {
 			hover = true;
@@ -30,6 +40,12 @@
 <svelte:window bind:innerWidth />
 
 <ul>
+	<li class="left w-[10%]" id="fullscreen">
+		<button on:click={toggleFullscreen}>
+			{#if document.fullscreenElement == null}<Expand />{:else}<Shrink
+				/>{/if}</button
+		>
+	</li>
 	<li id="one" class="w-[25%]">
 		{#if index > 0}
 			<button on:click={previous}>&lt- Previous</button>
@@ -98,10 +114,12 @@
 		font-weight: 500;
 	}
 	*/
+	#fullscreen {
+		padding: 20px 2% 0 2%;
+	}
 	#one {
-		padding: 20px 0 0 0;
+		padding: 20px 20px 0 0;
 		width: 15%;
-		margin-left: 10%;
 	}
 	#last {
 		padding: 20px 0 0 20px;
