@@ -15,10 +15,12 @@
 		"@melt-ui/pp": "^0.3.0",
 		"@melt-ui/svelte": "^0.76.3",
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-netlify": "^4.3.1",
 		"@sveltejs/adapter-node": "^4.0.1",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/base-64": "^1.0.2",
 		"@types/eslint": "^8.56.7",
 		"@types/noisejs": "^0.0.31",
 		"autoprefixer": "^10.4.16",
@@ -40,6 +42,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"base-64": "^1.0.0",
+		"base64-js": "^1.5.1",
+		"browser": "^0.2.6",
 		"lucide-svelte": "^0.379.0",
 		"noisejs": "^2.1.0"
 	}
