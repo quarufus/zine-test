@@ -40,7 +40,6 @@
     >
     μας.
   </p>
-  <!--
   <form method="PUT" on:submit|preventDefault={subscribe} class="my-5">
     <input
       type="email"
@@ -50,5 +49,4 @@
     />
     <button type="submit" class="relative top-[-5px] mx-5">Εγγραφή</button>
   </form>
-  -->
 </div>
