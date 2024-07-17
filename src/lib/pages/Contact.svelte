@@ -27,25 +27,26 @@
   <h1 class="my-5">Επικοινωνία</h1>
   <p>
     Το περιοδικό διατίθεται ηλεκτρονικά και μπορείς να το κατεβάσεις δωρεάν....
-    Εαν θέλεις μπορείς να <a href="/#">συνεισφέρεις</a> για την μελλοντική
-    τύπωση του περιοδικού και το κόστος της ιστοσελίδας.
-    <a href="/#">Φμπ, Ινστα</a>.
+    Εαν θέλεις μπορείς να <a href="/#">συνεισφέρεις</a> για την μελλοντική τύπωση
+    του περιοδικού και το κόστος της ιστοσελίδας.
   </p>
   <br />
   <br />
   <p>
-    Για περισσότερες ανακοινώσεις και ενημερώσεις, κάνε <a
-      href="http://eepurl.com/iR5dt6">στο newsletter</a
+    Για περισσότερες ανακοινώσεις και ενημερώσεις, ακολούθησέ μας στο <a
+      href="/#">Φμπ, Ινστα</a
     >
-    μας.
+    και κάνε εγγραφή στο newsletter μας:
   </p>
-  <form method="PUT" on:submit|preventDefault={subscribe} class="my-5">
-    <input
-      type="email"
-      bind:value={email}
-      required
-      class="border-black border-2 p-1.5"
-    />
-    <button type="submit" class="relative top-[-5px] mx-5">Εγγραφή</button>
-  </form>
+  <div class="flex justify-center m-5">
+    <form method="PUT" on:submit|preventDefault={subscribe} class="my-5">
+      <input
+        type="email"
+        bind:value={email}
+        required
+        class="border-black border-2 p-1.5"
+      />
+      <button type="submit" class="relative top-[-5px] mx-5">Εγγραφή</button>
+    </form>
+  </div>
 </div>
