@@ -18,7 +18,7 @@ export const POST: RequestHandler = async ({ request }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Basic ${base64.encode(`anystring:${process.env["MAILCHIMP_EPI_KEY"]}`)}`,
+        Authorization: `Basic ${base64.encode(`anystring:${process.env["MAILCHIMP_API_KEY"]}`)}`,
       },
       body: JSON.stringify({
         email_address: email,
