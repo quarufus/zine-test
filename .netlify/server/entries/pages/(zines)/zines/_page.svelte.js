@@ -1,4 +1,4 @@
-import { c as create_ssr_component, b as each, e as escape, a as subscribe, v as validate_component, d as spread, f as escape_object, h as add_attribute } from "../../../../chunks/ssr.js";
+import { c as create_ssr_component, d as each, e as escape, a as subscribe, v as validate_component, f as spread, h as escape_object, b as add_attribute } from "../../../../chunks/ssr.js";
 import { P as Pages } from "../../../../chunks/Pages.js";
 import { S as SinglePage } from "../../../../chunks/SinglePage.js";
 /* empty css                                                     */

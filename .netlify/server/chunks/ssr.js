@@ -246,13 +246,13 @@ function style_object_to_string(style_object) {
 }
 export {
   subscribe as a,
-  each as b,
+  add_attribute as b,
   create_ssr_component as c,
-  spread as d,
+  each as d,
   escape as e,
-  escape_object as f,
+  spread as f,
   getContext as g,
-  add_attribute as h,
+  escape_object as h,
   set_current_component as i,
   current_component as j,
   get_store_value as k,

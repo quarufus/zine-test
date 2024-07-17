@@ -1,4 +1,4 @@
-import { c as create_ssr_component, l as compute_rest_props, d as spread, f as escape_object, n as escape_attribute_value, b as each, v as validate_component, e as escape } from "./ssr.js";
+import { c as create_ssr_component, l as compute_rest_props, f as spread, h as escape_object, n as escape_attribute_value, d as each, v as validate_component, e as escape } from "./ssr.js";
 const void_element_names = /^(?:area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)$/;
 function is_void(name) {
   return void_element_names.test(name) || name.toLowerCase() === "!doctype";

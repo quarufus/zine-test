@@ -1,11 +1,11 @@
 import mailchimp from "$lib/services/mailchimp";
 import { json } from "@sveltejs/kit";
 import base64 from "base-64";
-import { MAILCHIMP_API_KEY } from "$env/static/private";
-import { MAILCHIMP_LIST_ID } from "$env/static/private";
+//import { MAILCHIMP_API_KEY } from "$env/static/private";
+//import { MAILCHIMP_LIST_ID } from "$env/static/private";
 
 export const POST: RequestHandler = async ({ request }) => {
-  const url = `https://api.mailchimp.com/3.0/lists/${MAILCHIMP_LIST_ID}/members`;
+  const url = `https://api.mailchimp.com/3.0/lists/${process.env["MAILCHIMP_LIST_ID"]}/members`;
   try {
     const { email } = await request.json();
 
@@ -16,7 +16,7 @@ export const POST: RequestHandler = async ({ request }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Basic ${base64.encode(`anystring:${MAILCHIMP_API_KEY}`)}`,
+        Authorization: `Basic ${base64.encode(`anystring:${process.env["MAILCHIMP_EPI_KEY"]}`)}`,
       },
       body: JSON.stringify({
         email_address: email,

@@ -1,6 +1,6 @@
 //import dotenv from 'dotenv';
 import base64 from "base-64";
-import { MAILCHIMP_API_KEY } from "$env/static/private";
+//import { MAILCHIMP_API_KEY } from "$env/static/private";
 //dotenv.config();
 //const MAILCHIMP_API_KEY = process.env['MAILCHIMP_API_KEY'];
 
@@ -9,7 +9,7 @@ async function registerEmail(email) {
   try {
     const list_id = "b065be02b4";
     const url = `https://api.mailchimp.com/3.0/lists/${list_id}/members`;
-    const password = MAILCHIMP_API_KEY;
+    const password = process.env["MAILCHIMP_API_KEY"];
 
     const data = {
       email_address: email,
