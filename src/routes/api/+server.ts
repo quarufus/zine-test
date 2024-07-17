@@ -1,6 +1,8 @@
 import mailchimp from "$lib/services/mailchimp";
 import { json } from "@sveltejs/kit";
 import base64 from "base-64";
+import dotenv from "dotenv";
+dotenv.config();
 //import { MAILCHIMP_API_KEY } from "$env/static/private";
 //import { MAILCHIMP_LIST_ID } from "$env/static/private";
 
