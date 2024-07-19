@@ -46,8 +46,9 @@
 		"base64-js": "^1.5.1",
 		"browser": "^0.2.6",
 		"dotenv": "^16.4.5",
+		"drab": "^5.4.2",
 		"lucide-svelte": "^0.379.0",
-		"noisejs": "^2.1.0",
+		"svelte-gestures": "^5.0.1",
 		"svelte-i18n": "^4.0.0"
 	}
 }

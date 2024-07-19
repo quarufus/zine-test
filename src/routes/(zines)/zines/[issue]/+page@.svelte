@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { swipe, type SwipeCustomEvent } from "svelte-gestures";
   import IssueaNav from "$lib/IssueaNav.svelte";
   import Settings from "$lib/Settings.svelte";
   import VerticalRule from "$lib/VerticalRule.svelte";
@@ -73,6 +74,17 @@
     return visible;
   }
 
+  function swipeHandler(event: SwipeCustomEvent) {
+    switch (event.detail.direction) {
+      case "right":
+        previous();
+        break;
+      case "left":
+        next();
+        break;
+    }
+  }
+
   onMount(() => {
     mounted = true;
 
@@ -108,7 +120,10 @@
   />
 </svelte:head>
 
-<main>
+<main
+  use:swipe={{ timeframe: 300, minSwipeDistance: 60 }}
+  on:swipe={swipeHandler}
+>
   {#if showSettings}
     <Settings {toggleSettings} {innerWidth} />
   {/if}
