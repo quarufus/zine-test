@@ -1,8 +1,15 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { _ } from "svelte-i18n";
 
   export let index: number;
-  const title = ["Start", "Home", "Zines", "About", "Contact", "End"];
+  const values = ["home", "zines", "about", "contact"];
+  $: title = [
+    $_("nav.home"),
+    $_("nav.zines"),
+    $_("nav.about"),
+    $_("nav.contact"),
+  ];
 </script>
 
 <div id="ul">
@@ -11,33 +18,33 @@
       {#if title[index] == "Start"}
         <a href="/home">&lt- {title[index]}</a>
       {:else}
-        <a href="/{title[index].toLowerCase()}">&lt- {title[index]}</a>
+        <a href="/{values[index - 1].toLowerCase()}">&lt- {title[index - 1]}</a>
       {/if}
     {/if}
   </div>
   <div>
     <a href="./home" class:active={$page.url.pathname.includes("/home")}
-      >To Bitoni</a
+      >{$_("nav.home")}</a
     >
   </div>
   <div>
     <a href="./zines" class:active={$page.url.pathname.includes("/zines")}
-      >Zines</a
+      >{$_("nav.zines")}</a
     >
   </div>
   <div>
     <a href="./about" class:active={$page.url.pathname.includes("/about")}
-      >About</a
+      >{$_("nav.about")}</a
     >
   </div>
   <div>
     <a href="./contact" class:active={$page.url.pathname.includes("/contact")}
-      >Contact</a
+      >{$_("nav.contact")}</a
     >
   </div>
   <div class="arrow" id="right">
     {#if index < 3}
-      <a href="/{title[index + 2].toLowerCase()}">{title[index + 2]} -&gt</a>
+      <a href="/{values[index + 1].toLowerCase()}">{title[index + 1]} -&gt</a>
     {/if}
   </div>
 </div>

@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "To Bitoni"
+  },
+  "nav": {
+    "home": "Home",
+    "zines": "Zines",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home_page": {
+    "title": "Home",
+    "description": "To biton home page",
+    "content": {
+      "heading": "To Bitoni",
+      "paragraph": "is a channel for publishing collective masterpieces / creations In each issue of Bitoni/bitoniou/bitoniera-mixer you will find some creative washouts on unique, independent themes that will at least fascinate you, take you and lift you up. It was created by a group of friends who wanted to share their eyeglasses with the rest of the world. We offer them to you to wear / we wear them to you, offer them.",
+      "paragraph2": "Sincerely, the team To Bitoni"
+    }
+  },
+  "zines_page": {
+    "title": "Zines",
+    "description": "All issues from To Bitoni magazine",
+    "content": {
+      "heading": "Zines",
+      "issue_1": {
+        "title": "Pigeons",
+        "date": ""
+      }
+    }
+  },
+  "about_page": {
+    "content": {
+      "heading": "About",
+      "p1": "Bitoni is a collective, electronic (and not only) magazine that It is issued seasonally. On Bitoni's website you will find the issues uploaded of the magazine. Each issue is dedicated to a unique / different theme. The material you will find in the issues ranges from prose texts & fairy tales, graphic design and poems, potatoes, tomatoes, cool lettuce and musical chairs. The greengrocers in your neighborhood who create, compile and generously offer you this magazine is A group of friends consisting of:"
+    }
+  },
+  "contact_page": {
+    "content": {
+      "heading": "Contact",
+      "p1": "The magazine is available online and can be downloaded for free.... If you want you can <a href='/#'>contribute</a> for future printing of the magazine and the cost of the website.",
+      "p2": "For more announcements and updates, follow us at <a href='/#'>FB, Insta</a> and subscribe to our newsletter:",
+      "subscribe": "Subscribe"
+    }
+  }
+}

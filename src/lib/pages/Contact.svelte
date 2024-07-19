@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ } from "svelte-i18n";
   let email = "";
 
   async function subscribe(event) {
@@ -24,19 +25,14 @@
 </script>
 
 <div class="p-10">
-  <h1 class="my-5">Επικοινωνία</h1>
+  <h1 class="my-5">{$_("contact_page.content.heading")}</h1>
   <p>
-    Το περιοδικό διατίθεται ηλεκτρονικά και μπορείς να το κατεβάσεις δωρεάν....
-    Εαν θέλεις μπορείς να <a href="/#">συνεισφέρεις</a> για την μελλοντική τύπωση
-    του περιοδικού και το κόστος της ιστοσελίδας.
+    {@html $_("contact_page.content.p1")}
   </p>
   <br />
   <br />
   <p>
-    Για περισσότερες ανακοινώσεις και ενημερώσεις, ακολούθησέ μας στο <a
-      href="/#">Φμπ, Ινστα</a
-    >
-    και κάνε εγγραφή στο newsletter μας:
+    {@html $_("contact_page.content.p2")}
   </p>
   <div class="flex justify-center m-5">
     <form method="PUT" on:submit|preventDefault={subscribe} class="my-5">
@@ -44,9 +40,11 @@
         type="email"
         bind:value={email}
         required
-        class="border-black border-2 p-1.5"
+        class="border-black border-2 p-1.5 me-5"
       />
-      <button type="submit" class="relative top-[-5px] mx-5">Εγγραφή</button>
+      <button type="submit" class="relative top-[-5px] my-5"
+        >{$_("contact_page.content.subscribe")}</button
+      >
     </form>
   </div>
 </div>

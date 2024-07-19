@@ -1,5 +1,16 @@
-<script>
+<script lang="ts">
   import "../app.pcss";
+  import LocaleSwitcher from "$lib/components/LocaleSwitcher.svelte";
+  import { onMount } from "svelte";
+  import { locale } from "svelte-i18n";
+
+  let mounted = false;
+
+  let myLocale: string;
+  $: if (mounted) locale.set(myLocale);
+  onMount(() => {
+    mounted = true;
+  });
 </script>
 
 <svelte:head>
@@ -11,6 +22,7 @@
   />
 </svelte:head>
 
+<LocaleSwitcher bind:value={myLocale} />
 <slot />
 
 <style>
