@@ -6,12 +6,16 @@
 
   let mounted = false;
 
-  let myLocale: string;
+  let innerWidth: number;
+
+  let myLocale: string = "Greek";
   $: if (mounted) locale.set(myLocale);
   onMount(() => {
     mounted = true;
   });
 </script>
+
+<svelte:window bind:innerWidth />
 
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +26,9 @@
   />
 </svelte:head>
 
-<LocaleSwitcher bind:value={myLocale} />
+{#if innerWidth > 900}
+  <LocaleSwitcher bind:value={myLocale} />
+{/if}
 <slot />
 
 <style>

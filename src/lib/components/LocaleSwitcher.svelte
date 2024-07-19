@@ -29,7 +29,7 @@
   </button>
   {#if $open}
     <div
-      class="z-10 flex max-h-[300px] flex-col
+      class="z-50 flex max-h-[300px] flex-col
        overflow-y-auto"
       use:melt={$menu}
     >
